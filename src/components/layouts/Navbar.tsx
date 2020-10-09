@@ -24,7 +24,6 @@ function Navbar() {
 
 const Container = styled.div`
   background: #36FFA2;
-  width: 100%;
   display: flex;
   padding: 0em 5em 0em 5em;
 `
