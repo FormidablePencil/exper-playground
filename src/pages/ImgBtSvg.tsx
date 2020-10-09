@@ -30,7 +30,6 @@ export default ImgBtSvg
 
 const PolygonShape = ({ color, overlay }: { color?: string, overlay?: boolean }) =>
   <polygon
-    
     points={overlay ?"128.44,237.89 280.74,260.46 367.63,119.72 330.92,78.16" : "98.44,237.89 280.74,260.46 367.63,119.72 330.92,78.16"}
     transform="translate(34.359428,-16.186273)"
     fill={color ?? "#74a4c7"}
