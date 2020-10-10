@@ -3,58 +3,69 @@ import React from 'react'
 function ImgBtSvg() {
   return (
     <div>
-
-      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.2 300.29">
+        <title>Crystal Without Anything</title>
         <PolygonShape />
         <clipPath id="clipCircle">
           <PolygonShape />
         </clipPath>
         <image
           clip-path="url(#clipCircle)"
-          x='245' y='70'
+          x='225' y='70'
           height="100" width="110"
           xlinkHref={require("../assets/pokeballSplash.png")}
         />
-          <PolygonShape
-            color='rgba(182,233,255,.9)'
-             overlay={true} 
-             />
-      </svg>
+      </svg> */}
 
-      <Svgg />
+      <Shards />
     </div>
   )
 }
 
 export default ImgBtSvg
 
-const PolygonShape = ({ color, overlay }: { color?: string, overlay?: boolean }) =>
-  <polygon
-    points={overlay ?"128.44,237.89 280.74,260.46 367.63,119.72 330.92,78.16" : "98.44,237.89 280.74,260.46 367.63,119.72 330.92,78.16"}
-    transform="translate(34.359428,-16.186273)"
-    fill={color ?? "#74a4c7"}
-  />
 
+const Shards = () => {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1322.1 713.42">
+      <title>Shapes of shards</title>
+      <Shard />
+      <polygon fill='#3D515B' className="cls-1" points="704.73 151.95 585.82 79.48 534.06 180.56 561.67 244.83 626.95 278.19 704.73 242.1 704.73 151.95" />
+      <polygon fill='#3D515B' className="cls-1" points="1173.67 140.85 1138.95 29.15 1074.64 0 1009.67 36.94 974.51 159.1 1129.16 178.84 1173.67 140.85" />
+      <polygon fill='#3D515B' className="cls-1" points="309.2 341.39 232.48 279.83 0 439.55 242.31 462.12 309.2 341.39" />
+      <polygon fill='#3D515B' className="cls-1" points="489.93 281.11 365.16 281.51 359.19 383.34 489.93 281.11" />
+      <polygon fill='#3D515B' className="cls-1" points="616 370.98 580.01 326.61 379.72 440.42 403.28 466.98 600.55 413.47 616 370.98" />
+      <polygon fill='#3D515B' className="cls-1" points="913.41 343.4 1018.06 293.88 1110.09 221.47 1112.89 214.69 941.68 203.95 743.37 257.67 692.44 366.06 806.67 443.61 851.05 540.08 949.85 449.17 913.41 343.4" />
+      <polygon fill='#3D515B' className="cls-1" points="1322.1 163.28 1290.29 151.56 1157.57 218.04 1115.78 286.53 1115.78 290.39 1220.44 291.52 1276.94 270.93 1322.1 163.28" />
+      <polygon fill='#3D515B' className="cls-1" points="1179.38 541.97 1261.49 467 1266.49 357.34 1268.49 328.07 1243.21 333.49 1204.94 329.92 1170.39 329.64 1127.98 329.21 1080.71 340.77 982.33 388.18 1020.74 494.71 1179.38 541.97" />
+      <polygon fill='#3D515B' className="cls-1" points="297.85 436.7 328.71 424.39 375.35 532.05 349.17 582.68 273.05 650.99 251.55 569.68 297.85 436.7" />
+      <polygon fill='#3D515B' className="cls-1" points="519.94 600.71 558.43 496.86 549.25 498.77 458.05 569.68 476.43 620.48 519.94 600.71" />
+      <polygon fill='#3D515B' className="cls-1" points="715.33 631.32 632.12 508.53 569.45 669.62 589.61 703.89 622.59 713.42 672.07 694.36 715.33 631.32" />
+      <polygon fill='#3D515B' className="cls-1" points="836.1 618.67 793.21 520.99 681.42 446.22 736.22 543.72 836.1 618.67" />
+      <polygon fill='#3D515B' className="cls-1" points="1268.49 696.93 1122.17 590.82 951.55 540.08 858.64 626.74 917.28 677.68 1268.49 696.93" />
+    </svg>
+  )
+}
 
-const Svgg = () => {
+const Shard = () => {
   return (
     <>
-      <svg
-        width="110mm"
-        height="197mm"
-        viewBox="0 0 210 297"
-      >
-        <g
-          className="cls-1"
-          id="g937"
-          transform="matrix(0.26458333,0,0,0.26458333,37.740271,93.016825)">
-          <polygon
-            className="cls-4"
-            points="98.44,237.89 340.74,260.46 407.63,139.72 330.92,78.16"
-            transform="translate(34.359428,-16.186273)">
-          </polygon>
-        </g>
-      </svg>
+      {/* Background fill */}
+      <Shard1Shape fill='#3D515B' />
+        {/* clipPath */}
+      <clipPath id="clipCircle">
+        <Shard1Shape />
+      </clipPath>
+      <image
+        clip-path="url(#clipCircle)"
+        x='125' y='70'
+        height="100" width="110"
+        xlinkHref={require("../assets/pokeballSplash.png")}
+      />
+      {/* Sheen */}
+      {/* <polygon fill='#3D515B' className="cls-1" points="478.3 222.48 505.47 59.46 329.55 3.76 140.72 75.76 219.51 216.36 328.87 251 478.3 222.48" /> */}
     </>
   )
 }
+const Shard1Shape = ({ fill }: { fill?: string }) =>
+  <polygon fill={fill ?? 'rgba(255,255,255,0)'} className="cls-1" points="478.3 222.48 505.47 59.46 329.55 3.76 140.72 75.76 219.51 216.36 328.87 251 478.3 222.48"></polygon>
