@@ -1,17 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { routesAndTitle } from '../Routes'
+import { pages } from '../Routes'
 
 function TableOfContents() {
   return (
     <div>
       <Container>
         <Index>
-          {routesAndTitle.map((item, index) => {
+          {pages.map((page, index) => {
             if (index !== 0) {
               return (
-                <Link to={item[0]}><p>{item[1]}</p></Link>
+                <Link key={page.title} to={page.path}><p>{page.title}</p></Link>
               )
             } else return null
           })}

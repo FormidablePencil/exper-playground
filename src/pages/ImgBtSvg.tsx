@@ -10,7 +10,7 @@ function ImgBtSvg() {
           <PolygonShape />
         </clipPath>
         <image
-          clip-path="url(#clipCircle)"
+          clipPath="url(#clipCircle)"
           x='225' y='70'
           height="100" width="110"
           xlinkHref={require("../assets/pokeballSplash.png")}
@@ -63,17 +63,17 @@ const Shard = () => {
         <Shard1Shape />
       </clipPath>
       <linearGradient id="myGradient" gradientTransform="rotate(90)">
-          <stop offset="5%" stop-color="gold" />
-          <stop offset="95%" stop-color="red" />
+          <stop offset="5%" stopColor="gold" />
+          <stop offset="95%" stopColor="red" />
         </linearGradient>
       <image
-        clip-path="url(#clipCircle)"
+        clipPath="url(#clipCircle)"
         x='15' y='250'
         height="225"
         xlinkHref={require("../assets/pokeballSplash.png")}
       />
       <image
-        // clip-path="url(#clipCircle)"
+        // clipPath="url(#clipCircle)"
         x='65' y='301.5'
         // height="358"
         xlinkHref={require("../assets/sheen14.svg")}
@@ -100,8 +100,3 @@ const Shard1Shape = ({ fill }: { fill?: string }) =>
 //       <polygon className="cls-1" points="167.87 0.47 0.65 67.03 23.95 124.18 23.33 111.19 11.79 69.74 167.87 0.47" />
 //     </g>
 //   </svg>
-
-{/* <linearGradient id="myGradient" gradientTransform="rotate(90)">
-          <stop offset="5%" stop-color="gold" />
-          <stop offset="95%" stop-color="red" />
-        </linearGradient> */}

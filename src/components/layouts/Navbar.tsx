@@ -1,22 +1,22 @@
 import React from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 import styled from 'styled-components'
-import { routesAndTitle } from '../../Routes'
+import { pages } from '../../Routes'
 
 function Navbar() {
   const { path } = useRouteMatch()
 
-  const title = routesAndTitle.filter(item => item[0] === path)[0][1]
-  const tableOfContents = routesAndTitle.filter(item => item[0] === '/')[0][1]
+  const title = pages.filter(page => page.path === path)[0].title
+  const home = pages.filter(page => page.path === '/' && page)[0].title
 
-  const BackToTableOfContents = () =>
+  const BackToHome = () =>
     <>{path !== '/' &&
-      <NavItem><Link to='/'>{tableOfContents}</Link></NavItem>
+      <NavItem><Link to='/'>{home}</Link></NavItem>
     }</>
 
   return (
     <Container>
-      <BackToTableOfContents />
+      <BackToHome />
       <NavItem>{title}</NavItem>
     </Container>
   )
