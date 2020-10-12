@@ -8,8 +8,8 @@ import TableOfContents from './pages/TableOfContents'
 
 export const pages = [
   { title: 'Table Of Contents', path: '/', component: <TableOfContents /> },
-  { title: 'Parallax Effect', path: '/parallaxEffect', component: <ParallaxEffect /> },
   { title: 'Image Between Svg', path: '/imageBetweenSvg', component: <ImgBtSvg /> },
+  { title: 'Parallax Effect', path: '/parallaxEffect', component: <ParallaxEffect /> },
   { title: 'Crystal Parallax Effect', path: '/crystalParallaxEffect', component: <CrystalParallaxEffect /> },
 ]
 

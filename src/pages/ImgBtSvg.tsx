@@ -2,23 +2,7 @@ import React from 'react'
 
 function ImgBtSvg() {
   return (
-    <div>
-      {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000.2 300.29">
-        <title>Crystal Without Anything</title>
-        <PolygonShape />
-        <clipPath id="clipCircle">
-          <PolygonShape />
-        </clipPath>
-        <image
-          clipPath="url(#clipCircle)"
-          x='225' y='70'
-          height="100" width="110"
-          xlinkHref={require("../assets/pokeballSplash.png")}
-        />
-      </svg> */}
-
       <Shards />
-    </div>
   )
 }
 
@@ -32,7 +16,7 @@ const Shards = () => {
       <polygon fill='#3D515B' className="cls-1" points="704.73 151.95 585.82 79.48 534.06 180.56 561.67 244.83 626.95 278.19 704.73 242.1 704.73 151.95" />
       <polygon fill='#3D515B' className="cls-1" points="1173.67 140.85 1138.95 29.15 1074.64 0 1009.67 36.94 974.51 159.1 1129.16 178.84 1173.67 140.85" />
 
-      <Shard />
+      <TestShard />
 
       <polygon fill='#3D515B' className="cls-1" points="489.93 281.11 365.16 281.51 359.19 383.34 489.93 281.11" />
       <polygon fill='#3D515B' className="cls-1" points="616 370.98 580.01 326.61 379.72 440.42 403.28 466.98 600.55 413.47 616 370.98" />
@@ -53,7 +37,7 @@ const Shards = () => {
   )
 }
 
-const Shard = () => {
+export const TestShard = () => {
   return (
     <>
       {/* Background fill */}
@@ -63,9 +47,9 @@ const Shard = () => {
         <Shard1Shape />
       </clipPath>
       <linearGradient id="myGradient" gradientTransform="rotate(90)">
-          <stop offset="5%" stopColor="gold" />
-          <stop offset="95%" stopColor="red" />
-        </linearGradient>
+        <stop offset="5%" stopColor="gold" />
+        <stop offset="95%" stopColor="red" />
+      </linearGradient>
       <image
         clipPath="url(#clipCircle)"
         x='15' y='250'
@@ -88,15 +72,4 @@ const Shard = () => {
   )
 }
 const Shard1Shape = ({ fill }: { fill?: string }) =>
-  <polygon fill={fill ?? 'rgba(255,255,25,1)'} className="cls-1" points="309.2 341.39 232.48 279.83 0 439.55 242.31 462.12 309.2 341.39" />
-
-
-// const Sheen1 = () =>
-//   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328.47 225.52">
-//     {/* <defs><style>.cls-1{fill:#fff;stroke:#fff;stroke-miterlimit:10;opacity:0.25;}</style></defs> */}
-//     <title>Sheen 1</title>
-//     <g id="Sheens">
-//       <polygon className="cls-1" points="327.99 87.17 287.91 186.07 159.84 222.33 172.49 225 304.3 199.81 327.99 87.17" />
-//       <polygon className="cls-1" points="167.87 0.47 0.65 67.03 23.95 124.18 23.33 111.19 11.79 69.74 167.87 0.47" />
-//     </g>
-//   </svg>
+  <polygon fill={fill ?? '#64A4E9'} className="cls-1" points="309.2 341.39 232.48 279.83 0 439.55 242.31 462.12 309.2 341.39" />

@@ -1,11 +1,57 @@
+import { makeStyles } from '@material-ui/core';
 import React from 'react'
+import crystalParallax from '../constants/crystalParallax';
 
 function CrystalParallaxEffect() {
+  const classes = useStyles();
   return (
-    <div>
-      
+    <div className={classes.container}>
+      <div className={classes.parallaxContainer}>
+        <div
+          className={classes.parallaxItem}
+          style={{
+            width: '100%',
+            transform: 'translateZ(0px) scale(1)',
+            height: '840px',
+          }} />
+
+        {crystalParallax.crystals.map(item => {
+          if (item.component)
+            return <div className={classes.parallaxItem} style={item.styles}
+            >{item.component}</div>
+          else
+            return (
+              <img
+                className={classes.parallaxItem}
+                style={item.styles}
+                src={item.image}
+                alt={item.alt}
+              />
+            )
+        })}
+      </div>
     </div>
   )
 }
+
+const useStyles = makeStyles((theme) => ({
+  container: {
+    backgroundColor: 'aquamarine',
+    height: '55vh',
+    width: '100%',
+  },
+  parallaxContainer: {
+    position: 'relative',
+    width: '100%',
+    height: '100%',
+    overflowX: 'hidden',
+    overflowY: 'scroll',
+    perspective: '8px',
+    perspectiveOrigin: '0%',
+  },
+  parallaxItem: {
+    position: "absolute",
+  }
+}));
 
 export default CrystalParallaxEffect
