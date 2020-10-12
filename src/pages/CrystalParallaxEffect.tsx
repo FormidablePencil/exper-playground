@@ -4,6 +4,25 @@ import crystalParallax from '../constants/crystalParallax';
 
 function CrystalParallaxEffect() {
   const classes = useStyles();
+
+  const RenderCrystalsDynamically = () =>
+    <>
+      {crystalParallax.crystals.map(item => {
+        if (item.component)
+          return <div className={classes.parallaxItem} style={item.styles}
+          >{item.component}</div>
+        else
+          return (
+            <img
+              className={classes.parallaxItem}
+              style={item.styles}
+              src={item.image}
+              alt={item.alt}
+            />
+          )
+      })}
+    </>
+
   return (
     <div className={classes.container}>
       <div className={classes.parallaxContainer}>
@@ -15,20 +34,7 @@ function CrystalParallaxEffect() {
             height: '840px',
           }} />
 
-        {crystalParallax.crystals.map(item => {
-          if (item.component)
-            return <div className={classes.parallaxItem} style={item.styles}
-            >{item.component}</div>
-          else
-            return (
-              <img
-                className={classes.parallaxItem}
-                style={item.styles}
-                src={item.image}
-                alt={item.alt}
-              />
-            )
-        })}
+        <RenderCrystalsDynamically />
       </div>
     </div>
   )

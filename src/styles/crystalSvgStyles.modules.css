@@ -1,0 +1,36 @@
+/* .cls-1 {}
+
+.cls-2 {}
+
+.cls-2,
+.cls-6 {}
+
+.cls-3 {} */
+
+.cls-4 {
+  fill: rgba(71, 149, 246, 1);
+}
+
+.cls-5 {
+  mask: url(#mask);
+}
+
+.cls-6 {
+  opacity: 1;
+}
+
+.cls-7,
+.cls-8 {
+  fill: #fff;
+}
+
+.cls-8 {
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  opacity: 0.25;
+}
+
+/* .cls-9 {} */
+.base{
+  fill: red
+}
