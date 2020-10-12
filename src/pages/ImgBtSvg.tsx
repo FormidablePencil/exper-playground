@@ -29,10 +29,11 @@ const Shards = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1322.1 713.42">
       <title>Shapes of shards</title>
-      <Shard />
       <polygon fill='#3D515B' className="cls-1" points="704.73 151.95 585.82 79.48 534.06 180.56 561.67 244.83 626.95 278.19 704.73 242.1 704.73 151.95" />
       <polygon fill='#3D515B' className="cls-1" points="1173.67 140.85 1138.95 29.15 1074.64 0 1009.67 36.94 974.51 159.1 1129.16 178.84 1173.67 140.85" />
-      <polygon fill='#3D515B' className="cls-1" points="309.2 341.39 232.48 279.83 0 439.55 242.31 462.12 309.2 341.39" />
+
+      <Shard />
+
       <polygon fill='#3D515B' className="cls-1" points="489.93 281.11 365.16 281.51 359.19 383.34 489.93 281.11" />
       <polygon fill='#3D515B' className="cls-1" points="616 370.98 580.01 326.61 379.72 440.42 403.28 466.98 600.55 413.47 616 370.98" />
       <polygon fill='#3D515B' className="cls-1" points="913.41 343.4 1018.06 293.88 1110.09 221.47 1112.89 214.69 941.68 203.95 743.37 257.67 692.44 366.06 806.67 443.61 851.05 540.08 949.85 449.17 913.41 343.4" />
@@ -43,6 +44,11 @@ const Shards = () => {
       <polygon fill='#3D515B' className="cls-1" points="715.33 631.32 632.12 508.53 569.45 669.62 589.61 703.89 622.59 713.42 672.07 694.36 715.33 631.32" />
       <polygon fill='#3D515B' className="cls-1" points="836.1 618.67 793.21 520.99 681.42 446.22 736.22 543.72 836.1 618.67" />
       <polygon fill='#3D515B' className="cls-1" points="1268.49 696.93 1122.17 590.82 951.55 540.08 858.64 626.74 917.28 677.68 1268.49 696.93" />
+      {/* <image
+        x='160' y='235'
+        height="225"
+        xlinkHref={require("../assets/crystalInSingular.svg")}
+      /> */}
     </svg>
   )
 }
@@ -51,21 +57,51 @@ const Shard = () => {
   return (
     <>
       {/* Background fill */}
-      <Shard1Shape fill='#3D515B' />
-        {/* clipPath */}
+      <Shard1Shape fill="#64A4E9" />
+      {/* clipPath */}
       <clipPath id="clipCircle">
         <Shard1Shape />
       </clipPath>
+      <linearGradient id="myGradient" gradientTransform="rotate(90)">
+          <stop offset="5%" stop-color="gold" />
+          <stop offset="95%" stop-color="red" />
+        </linearGradient>
       <image
         clip-path="url(#clipCircle)"
-        x='125' y='70'
-        height="100" width="110"
+        x='15' y='250'
+        height="225"
         xlinkHref={require("../assets/pokeballSplash.png")}
       />
+      <image
+        // clip-path="url(#clipCircle)"
+        x='65' y='301.5'
+        // height="358"
+        xlinkHref={require("../assets/sheen14.svg")}
+      />
       {/* Sheen */}
-      {/* <polygon fill='#3D515B' className="cls-1" points="478.3 222.48 505.47 59.46 329.55 3.76 140.72 75.76 219.51 216.36 328.87 251 478.3 222.48" /> */}
+      <image
+        x='160' y='15'
+        height="225"
+        xlinkHref={require("../assets/Sheen1.svg")}
+      />
     </>
   )
 }
 const Shard1Shape = ({ fill }: { fill?: string }) =>
-  <polygon fill={fill ?? 'rgba(255,255,255,0)'} className="cls-1" points="478.3 222.48 505.47 59.46 329.55 3.76 140.72 75.76 219.51 216.36 328.87 251 478.3 222.48"></polygon>
+  <polygon fill={fill ?? 'rgba(255,255,25,1)'} className="cls-1" points="309.2 341.39 232.48 279.83 0 439.55 242.31 462.12 309.2 341.39" />
+
+
+// const Sheen1 = () =>
+//   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 328.47 225.52">
+//     {/* <defs><style>.cls-1{fill:#fff;stroke:#fff;stroke-miterlimit:10;opacity:0.25;}</style></defs> */}
+//     <title>Sheen 1</title>
+//     <g id="Sheens">
+//       <polygon className="cls-1" points="327.99 87.17 287.91 186.07 159.84 222.33 172.49 225 304.3 199.81 327.99 87.17" />
+//       <polygon className="cls-1" points="167.87 0.47 0.65 67.03 23.95 124.18 23.33 111.19 11.79 69.74 167.87 0.47" />
+//     </g>
+//   </svg>
+
+{/* <linearGradient id="myGradient" gradientTransform="rotate(90)">
+          <stop offset="5%" stop-color="gold" />
+          <stop offset="95%" stop-color="red" />
+        </linearGradient> */}
