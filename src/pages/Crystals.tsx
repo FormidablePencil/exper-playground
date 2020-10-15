@@ -12,9 +12,12 @@ import Crystal6 from '../components/crystals/Crystal6'
 import Crystal7 from '../components/crystals/Crystal7'
 import Crystal8 from '../components/crystals/Crystal8'
 import Crystal9 from '../components/crystals/Crystal9'
-import SvgAndImageClipPathReference from '../components/ImgBtSvg/SvgAndImageClipPathReference'
-//~ create css module for styling,
-//~ leave the rest to one css that'll gover the rest of the styles of the crystals
+
+//~ link these properties:
+// feColorMatrixBackdrop='
+//  feColorMatrixDx=''
+//  feColorMatrixDy=''
+//  feColorMatrixStdDeviation=''
 
 export const SvgSizingWrapper = ({ children }) => {
   return (
@@ -29,9 +32,18 @@ function Crystals() {
     <div>
       <SvgSizingWrapper>
         <Crystal1
+
           image={require("../assets/pokeballSplash.png")}
           edgesColor={'#79E969'}
           middleColor={'#E9E642'}
+          feColorMatrixBackdrop='
+         0     0     0     0     0
+         0     0     0     0     0
+         0     0     0     0     0
+         0     0     0     .2     0'
+        //  feColorMatrixDx=''
+        //  feColorMatrixDy=''
+        //  feColorMatrixStdDeviation=''
         />
       </SvgSizingWrapper>
       <SvgSizingWrapper>
@@ -43,6 +55,13 @@ function Crystals() {
       </SvgSizingWrapper>
       <SvgSizingWrapper>
         <Crystal3
+          edgesColor={'#79E969'}
+          middleColor={'#E9E642'}
+          feColorMatrixBackdrop='
+         0     0     0     0     0
+         0     0     0     0     0
+         0     0     0     0     0
+         0     0     0     .2     0'
           image={require("../assets/pokeballSplash.png")}
         />
       </SvgSizingWrapper>

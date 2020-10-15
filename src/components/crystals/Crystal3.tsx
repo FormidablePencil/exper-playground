@@ -1,8 +1,15 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function crystal3({ image }) {
+function Crystal3({ image, edgesColor, middleColor, feColorMatrixBackdrop }: {
+  image, edgesColor, middleColor, feColorMatrixBackdrop?: string
+}) {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 376 355">
+    <svg viewBox="0 0 376 355">
+      <CrystalBackdrop feColorMatrixBackdrop='0     0     0     0     0
+          0     0     0     0     0
+          0     0     0     0     0
+          0     0     0     .2     0' nameId='filter-crystal3' />
       <defs>
         <mask id="mask-crystal3" x="96" y="76" width="204" height="184" maskUnits="userSpaceOnUse">
           <g className="cls-9">
@@ -16,7 +23,7 @@ function crystal3({ image }) {
       <title>Crystal 3</title>
       <g className="cls-1">
         <g id="Shard_3" data-name="Shard 3">
-          <polygon className="cls-4"
+          <polygon className="cls-4" filter="url(#filter-crystal3)"
             points="297.55 219.47 262.84 107.76 198.53 78.61 133.55 115.55 98.4 237.72 253.05 257.45 297.55 219.47" />
           <g className="cls-5-crystal3">
             <g className="cls-6">
@@ -24,10 +31,10 @@ function crystal3({ image }) {
                 points="297.55 219.47 262.84 107.76 198.53 78.61 133.55 115.55 98.4 237.72 253.05 257.45 297.55 219.47" />
             </g>
             <image
-            x='50' y='10'
-            height="225"
-            xlinkHref={image}
-          />
+              x='50' y='10'
+              height="225"
+              xlinkHref={image}
+            />
           </g>
         </g>
         <g id="Sheens">
@@ -41,4 +48,4 @@ function crystal3({ image }) {
   )
 }
 
-export default crystal3
+export default Crystal3

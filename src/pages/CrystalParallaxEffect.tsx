@@ -44,7 +44,7 @@ function CrystalParallaxEffect() {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: 'aquamarine',
+    // backgroundColor: 'aquamarine',
     height: '55vh',
     width: '100%',
   },
@@ -63,3 +63,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default CrystalParallaxEffect
+
+// {/* add before mask: <filter id="f1" x="0" y="0" width="200%" height="200%">
+// <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2" />
+// <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+// <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+// </filter>
+
+// add filter="url(#f1)" in class="cls-4" */}

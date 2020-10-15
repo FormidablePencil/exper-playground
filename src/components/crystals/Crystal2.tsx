@@ -1,4 +1,5 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal2({ edgesColor, middleColor, image }) {
 
@@ -6,6 +7,10 @@ function Crystal2({ edgesColor, middleColor, image }) {
     <>
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 349 375">
         <defs>
+          <CrystalBackdrop  feColorMatrixBackdrop='0     0     0     0     0
+          0     0     0     0     0
+          0     0     0     0     0
+          0     0     0     .2     0'  nameId='filter-crystal2' />
           <mask id='mask-crystal2' x="97" y="76" width="176" height="204" maskUnits="userSpaceOnUse">
             <g fill='#374FE9'>
               <g transform="translate(-13.48 46.06)">
@@ -18,7 +23,7 @@ function Crystal2({ edgesColor, middleColor, image }) {
         <title>Crystal 2</title>
         <g className="cls-1">
           <g id="Shard_2" data-name="Shard 2">
-            <polygon fill='#E99337' points="270.17 151.28 151.26 78.81 99.49 179.9 127.1 244.17 192.38 277.53 270.17 241.44 270.17 151.28" />
+            <polygon filter="url(#filter-crystal2)" fill='#E99337' points="270.17 151.28 151.26 78.81 99.49 179.9 127.1 244.17 192.38 277.53 270.17 241.44 270.17 151.28" />
             <g className='cls-5-crystal2'>
               <polygon
                 fill='#E9D764'
