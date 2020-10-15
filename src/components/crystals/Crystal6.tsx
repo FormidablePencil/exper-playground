@@ -1,10 +1,23 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function Crystal6({ image }) {
+function Crystal6({
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+}: {
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy
+}) {
   return (
     <svg viewBox="0 0 587 333">
       <defs>
         <mask id="mask-crystal6" x="97" y="76" width="414" height="162" maskUnits="userSpaceOnUse">
+          <CrystalBackdrop
+        feColorMatrixDx={feColorMatrixDx}
+        feColorMatrixDy={feColorMatrixDy}
+        feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+         nameId="filter-crystal6" feColorMatrixBackdropColor={feColorMatrixBackdropColor} />
           <g className="cls-9">
             <g transform="translate(-10.65 8.7)">
               <image width="414" height="162" transform="translate(107.65 67.3)"
@@ -16,11 +29,11 @@ function Crystal6({ image }) {
       <title>Crystal 6</title>
       <g className="cls-1">
         <g id="Shard_14" data-name="Shard 14">
-          <polygon className="cls-4"
+          <polygon fill={edgesColor} filter="url(#filter-crystal6)"
             points="508.92 235.26 362.61 129.15 191.99 78.41 99.07 165.07 157.72 216.02 508.92 235.26" />
           <g className="cls-5-crystal6">
             <g className="cls-6">
-              <polygon className="cls-7"
+              <polygon fill={middleColor}
                 points="508.92 235.26 362.61 129.15 191.99 78.41 99.07 165.07 157.72 216.02 508.92 235.26" />
               <image
                 x='50' y='10'

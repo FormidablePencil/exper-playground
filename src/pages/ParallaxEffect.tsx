@@ -1,9 +1,4 @@
 import React from 'react'
-import Crystal1 from '../components/crystals/Crystal1'
-import Crystal2 from '../components/crystals/Crystal2'
-import { SvgSizingWrapper } from '../pages/Crystals'
-
-import '../styles/main.modules.css'
 
 function ParallaxEffect() {
   return (

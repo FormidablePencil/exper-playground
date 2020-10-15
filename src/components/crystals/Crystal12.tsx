@@ -1,14 +1,23 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function Crystal12({ image }) {
+function Crystal12({
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+}: {
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy
+}) {
   return (
     <svg viewBox="0 0 309 278">
       <defs>
-        <filter id="luminosity-noclip" x="67.44" y="50.94" width="136" height="107" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-color="#fff" result="bg" />
-          <feBlend in="SourceGraphic" in2="bg" />
-        </filter>
+        <CrystalBackdrop
+        feColorMatrixDx={feColorMatrixDx}
+        feColorMatrixDy={feColorMatrixDy}
+        feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+         feColorMatrixBackdropColor={feColorMatrixBackdropColor}
+          nameId='filter-crystal12' />
         <mask id="mask-crystal12" x="97" y="76" width="136" height="107" maskUnits="userSpaceOnUse">
           <g className="cls-9">
             <g transform="translate(29.56 25.06)">
@@ -21,10 +30,11 @@ function Crystal12({ image }) {
       <title>Crystal 12</title>
       <g className="cls-1">
         <g id="Shard_5" data-name="Shard 5">
-          <polygon className="cls-4" points="230.36 78.44 105.6 78.84 99.62 180.68 230.36 78.44" />
+          <polygon fill={edgesColor} filter="url(#filter-crystal12)"
+           points="230.36 78.44 105.6 78.84 99.62 180.68 230.36 78.44" />
           <g className="cls-5-crystal12">
             <g className="cls-6">
-              <polygon className="cls-7" points="230.36 78.44 105.6 78.84 99.62 180.68 230.36 78.44" />
+              <polygon fill={middleColor} points="230.36 78.44 105.6 78.84 99.62 180.68 230.36 78.44" />
               <image
                 x='50' y='10'
                 height="225"

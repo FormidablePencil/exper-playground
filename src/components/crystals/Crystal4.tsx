@@ -1,14 +1,22 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function Crystal4({ image }) {
+function Crystal4({
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+}: {
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy
+}) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 383 317">
       <defs>
-        <filter id="luminosity-noclip" x="50.25" y="83.33" width="211" height="145" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-color="#fff" result="bg" />
-          <feBlend in="SourceGraphic" in2="bg" />
-        </filter>
+        <CrystalBackdrop
+          feColorMatrixDx={feColorMatrixDx}
+          feColorMatrixDy={feColorMatrixDy}
+          feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+          nameId="filter-crystal4" feColorMatrixBackdropColor={feColorMatrixBackdropColor} />
         <mask id="mask-crystal4" x="96" y="76" width="211" height="145" maskUnits="userSpaceOnUse">
           <g className="cls-9">
             <g transform="translate(45.75 -7.33)">
@@ -21,11 +29,11 @@ function Crystal4({ image }) {
       <title>Crystal 4</title>
       <g className="cls-1">
         <g id="Shard_8" data-name="Shard 8">
-          <polygon className="cls-4"
+          <polygon fill={edgesColor} filter="url(#filter-crystal4)"
             points="304.53 90.62 272.73 78.89 140 145.38 98.21 213.86 98.21 217.73 202.87 218.85 259.38 198.27 304.53 90.62" />
           <g className="cls-5-crystal4">
             <g className="cls-6">
-              <polygon className="cls-7"
+              <polygon fill={middleColor}
                 points="304.53 90.62 272.73 78.89 140 145.38 98.21 213.86 98.21 217.73 202.87 218.85 259.38 198.27 304.53 90.62" />
               <image
                 x='50' y='10'

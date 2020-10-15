@@ -1,14 +1,22 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function Crystal8({ image }) {
+function Crystal8({
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+}: {
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy
+}) {
   return (
     <svg viewBox="0 0 332 348">
       <defs>
-        <filter id="luminosity-noclip" x="59.94" y="77.62" width="160" height="178" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-color="#fff" result="bg" />
-          <feBlend in="SourceGraphic" in2="bg" />
-        </filter>
+        <CrystalBackdrop
+          feColorMatrixDx={feColorMatrixDx}
+          feColorMatrixDy={feColorMatrixDy}
+          feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+          nameId='filter-crystal8' feColorMatrixBackdropColor={feColorMatrixBackdropColor} />
         <mask id="mask-crystal8" x="96" y="76" width="160" height="178" maskUnits="userSpaceOnUse">
           <g className="cls-9">
             <g transform="translate(36.06 -1.62)">
@@ -21,10 +29,11 @@ function Crystal8({ image }) {
       <title>Crystal 8</title>
       <g className="cls-1">
         <g id="Shard_13" data-name="Shard 13">
-          <polygon className="cls-4" points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
+          <polygon fill={edgesColor} filter="url(#filter-crystal8)"
+            points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
           <g className="cls-5-crystal8">
             <g className="cls-6">
-              <polygon className="cls-7" points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
+              <polygon fill={middleColor} points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
               <image
                 x='50' y='10'
                 height="225"
@@ -40,7 +49,7 @@ function Crystal8({ image }) {
           <polygon className="cls-8" points="239.78 233.5 211.99 182.3 185.88 178.86 239.78 233.5" />
         </g>
       </g>
-    </svg>
+    </svg >
   )
 }
 

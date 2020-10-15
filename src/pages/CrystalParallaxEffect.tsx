@@ -8,14 +8,15 @@ function CrystalParallaxEffect() {
 
   const RenderCrystalsDynamically = () =>
     <>
-      {crystalParallax.crystals.map(item => {
+      {crystalParallax.crystals.map((item, index) => {
         if (item.component)
-          return <div className={classes.parallaxItem} style={item.styles}>
+          return <div key={index} className={classes.parallaxItem} style={item.styles}>
             <SvgSizingWrapper>{item.component}</SvgSizingWrapper>
           </div>
         else
           return (
             <img
+              key={index}
               className={classes.parallaxItem}
               style={item.styles}
               src={item.image}
@@ -63,11 +64,3 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default CrystalParallaxEffect
-
-// {/* add before mask: <filter id="f1" x="0" y="0" width="200%" height="200%">
-// <feOffset result="offOut" in="SourceAlpha" dx="2" dy="2" />
-// <feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
-// <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-// </filter>
-
-// add filter="url(#f1)" in class="cls-4" */}

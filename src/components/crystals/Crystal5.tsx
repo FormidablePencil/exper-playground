@@ -1,14 +1,24 @@
 import React from 'react'
+import CrystalBackdrop from './CrystalBackdrop'
 
-function Crystal5({ image }) {
+function Crystal5({
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+}: {
+  image, edgesColor, middleColor,
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy
+}) {
   return (
     <svg viewBox="0 0 463 390">
       <defs>
-        <filter id="luminosity-noclip" x="67.31" y="83.31" width="291" height="219" filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB">
-          <feFlood flood-color="#fff" result="bg" />
-          <feBlend in="SourceGraphic" in2="bg" />
-        </filter>
+        <CrystalBackdrop
+          feColorMatrixDx={feColorMatrixDx}
+          feColorMatrixDy={feColorMatrixDy}
+          feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+          feColorMatrixBackdropColor={feColorMatrixBackdropColor}
+          nameId="filter-crystal5"
+        />
         <mask id="mask-crystal5" x="96" y="76" width="291" height="219" maskUnits="userSpaceOnUse">
           <g className="cls-10">
             <g transform="translate(28.69 -7.31)">
@@ -21,11 +31,11 @@ function Crystal5({ image }) {
       <title>Crystal 5</title>
       <g className="cls-1">
         <g id="Shard_9" data-name="Shard 9">
-          <polygon className="cls-4"
+          <polygon fill={edgesColor} filter="url(#filter-crystal5)"
             points="295.82 292.31 377.92 217.34 382.92 107.67 384.92 78.4 359.65 83.83 321.38 80.26 286.82 79.97 244.41 79.54 197.15 91.11 98.76 138.52 137.17 245.04 295.82 292.31" />
           <g className="cls-5-crystal5">
             <g className="cls-6">
-              <polygon className="cls-7"
+              <polygon fill={middleColor}
                 points="295.82 292.31 377.92 217.34 382.92 107.67 384.92 78.4 359.65 83.83 321.38 80.26 286.82 79.97 244.41 79.54 197.15 91.11 98.76 138.52 137.17 245.04 295.82 292.31" />
               <image
                 x='50' y='10'
