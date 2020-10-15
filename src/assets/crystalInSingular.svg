@@ -34,7 +34,8 @@
       }
 
       .cls-9 {}
-      .base{
+
+      .base {
         fill: goldenrod
       }
     </style>

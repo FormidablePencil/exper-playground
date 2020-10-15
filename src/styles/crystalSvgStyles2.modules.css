@@ -1,0 +1,44 @@
+.cls-1 {
+  isolation: isolate;
+}
+
+.cls-2 {
+  opacity: 0.28;
+}
+
+.cls-2, .cls-6 {
+  mix-blend-mode: screen;
+}
+
+.cls-3 {
+  opacity: 0.43;
+  mix-blend-mode: multiply;
+}
+
+.cls-4 {
+  fill: #E96464;
+}
+
+.cls-5 {
+  mask: url(#maskCrystal2);
+}
+
+.cls-6 {}
+
+.cls-7 {
+  fill: #E96464;
+}
+
+.cls-8 {
+  fill: #fff;
+}
+
+.cls-8 {
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  opacity: 0.25;
+}
+
+.cls-9 {
+  filter: url(#luminosity-noclip);
+}

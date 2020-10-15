@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react'
 import crystalParallax from '../constants/crystalParallax';
+import { SvgSizingWrapper } from './Crystals';
 
 function CrystalParallaxEffect() {
   const classes = useStyles();
@@ -9,8 +10,9 @@ function CrystalParallaxEffect() {
     <>
       {crystalParallax.crystals.map(item => {
         if (item.component)
-          return <div className={classes.parallaxItem} style={item.styles}
-          >{item.component}</div>
+          return <div className={classes.parallaxItem} style={item.styles}>
+            <SvgSizingWrapper>{item.component}</SvgSizingWrapper>
+          </div>
         else
           return (
             <img

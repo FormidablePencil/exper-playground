@@ -1,4 +1,6 @@
 import React from 'react'
+import Crystal1 from '../components/crystals/Crystal1'
+import Crystal2 from '../components/crystals/Crystal2'
 
 export interface crystalParallaxT {
   crystalBgImg: {
@@ -21,6 +23,8 @@ interface crystalsT {
   }
 }
 
+/* Give shadow properties to shards */
+
 const crystalParallax: crystalParallaxT = {
   crystalBgImg: {
     width: '100%',
@@ -29,8 +33,12 @@ const crystalParallax: crystalParallaxT = {
   },
   crystals: [
     {
-      component: <></>,
-      image: require('../assets/crystalInSingular.svg'),
+      component: <Crystal1
+        image={require("../assets/pokeballSplash.png")}
+        edgesColor={'#79E969'}
+        middleColor={'#E9E642'}
+      />,
+      // image: require('../assets/crystalInSingular.svg'),
       alt: 'stars',
       styles: {
         top: '150px',
@@ -39,7 +47,11 @@ const crystalParallax: crystalParallaxT = {
       },
     },
     {
-      image: 'https://s3-ap-southeast-2.amazonaws.com/daily-fire-assets/codepen-assets/polygons.png',
+      component: <Crystal2
+        image={require("../assets/pokeballSplash.png")}
+        edgesColor={'#79E969'}
+        middleColor={'#E9E642'}
+      />,
       alt: 'polygons',
       styles: {
         top: '125px',
