@@ -2,9 +2,11 @@ import React from 'react'
 import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal8({
+  onClickHandler,
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
 }: {
+  onClickHandler?: any
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
@@ -31,7 +33,7 @@ function Crystal8({
         <g id="Shard_13" data-name="Shard 13">
           <polygon fill={edgesColor} filter="url(#filter-crystal8)"
             points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
-          <g className="cls-5-crystal8">
+          <g onClick={onClickHandler} className="cls-5-crystal8">
             <g className="cls-6">
               <polygon fill={middleColor} points="253.53 251.01 210.65 153.33 98.86 78.56 153.65 176.05 253.53 251.01" />
               <image

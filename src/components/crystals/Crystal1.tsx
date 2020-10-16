@@ -2,9 +2,11 @@ import React from 'react'
 import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal1({
+  onClickHandler,
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
 }: {
+  onClickHandler?: any
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
@@ -18,7 +20,8 @@ function Crystal1({
           feColorMatrixStdDeviation={feColorMatrixStdDeviation}
           feColorMatrixBackdropColor={feColorMatrixBackdropColor}
           nameId='filter-crystal1' />
-        <mask id="mask-crystal1" x="97" y="76" width="369" height="252" maskUnits="userSpaceOnUse">
+        <mask
+          id="mask-crystal1" x="97" y="76" width="369" height="252" maskUnits="userSpaceOnUse">
           <g className="">{/* //~ removed cls-9 */}
             <g transform="translate(-68 51)">
 
@@ -30,7 +33,7 @@ function Crystal1({
       </defs><title>Crystal 1</title><g className="cls-1"><g id="Shard_1" data-name="Shard 1">
 
         <polygon filter="url(#filter-crystal1)" fill={edgesColor} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81"></polygon>
-        <g className="cls-5-crystal1"><g className="cls-6">
+        <g onClick={onClickHandler} className="cls-5-crystal1"><g className="cls-6">
           <polygon fill={middleColor} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81" />
           <image
             x='50' y='10'

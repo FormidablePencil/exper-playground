@@ -13,14 +13,25 @@ import Crystal11 from '../components/crystals/Crystal11'
 import Crystal12 from '../components/crystals/Crystal13'
 import Crystal13 from '../components/crystals/Crystal12'
 
+interface SelectCrystalT {
+  feColorMatrixDx,
+  feColorMatrixDy, feColorMatrixStdDeviation,
+  image, edgesColor, middleColor, feColorMatrixBackdropColor
+}
+
 export interface crystalPositionOnParallaxCanvasT {
-  component: Object
+  componentProps: SelectCrystalT
   positionInParallaxCanvas: {
-    transform: string
-    top?: string | number
-    bottom?: string | number
-    left?: string | number
-    right?: string | number
+    transform: {
+      scale: string | number
+      translateZ: string | number
+    }
+    xYPosition: {
+      top: string | number
+      bottom: string | number
+      left: string | number
+      right: string | number
+    }
   }
 }
 
@@ -37,8 +48,88 @@ const feColorMatrixCrystalBackdropColor = `
 0     0     0     0     0
 0     0     0     0     0
 0     0     0     0     0
-0     0     0     .2    0
+0     0     0    .2     0
 `
+
+export const totalCrystals = 13
+
+const crystalParallaxDefault: crystalParallaxT = {
+  crystalBgImg: {
+    width: '100%',
+    transform: 'translateZ(0px) scale(1)',
+    height: '840px',
+  },
+  crystals: [
+    {
+      componentProps: {
+        feColorMatrixDx: 2,
+        feColorMatrixDy: 12,
+        feColorMatrixStdDeviation: 2,
+        image: require("../assets/pokeballSplash.png"),
+        edgesColor: '#5C8AE4', middleColor: '#F62E34',
+        feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+      },
+      positionInParallaxCanvas: {
+        transform: {
+          scale: 4,
+          translateZ: 1
+        },/* 'translateZ(1px) scale(1)' */
+        xYPosition: {
+          top: 100,
+          bottom: null,
+          left: null,
+          right: 100,
+        }
+      },
+    },
+    {
+      componentProps: {
+        feColorMatrixDx: 2,
+        feColorMatrixDy: 12,
+        feColorMatrixStdDeviation: 2,
+        image: require("../assets/pokeballSplash.png"),
+        edgesColor: '#5C8AE4', middleColor: '#F62E34',
+        feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+      },
+      positionInParallaxCanvas: {
+        transform: {
+          scale: 1,
+          translateZ: 3
+        },/* 'translateZ(1px) scale(1)' */
+        xYPosition: {
+          top: 100,
+          bottom: null,
+          left: 100,
+          right: null,
+        }
+      },
+    },
+  ]
+}
+
+export const SelectCrystal = ({ onClickHandler, whatCrystal, componentProps }: { onClickHandler?: Function, whatCrystal: number, componentProps: SelectCrystalT }) => {
+  const crystalProps = { onClickHandler, ...componentProps }
+  const allCrystalComponents = [
+    <Crystal1 {...crystalProps} />,
+    <Crystal2 {...crystalProps} />,
+    <Crystal3 {...crystalProps} />,
+    <Crystal4 {...crystalProps} />,
+    <Crystal5 {...crystalProps} />,
+    <Crystal6 {...crystalProps} />,
+    <Crystal7 {...crystalProps} />,
+    <Crystal8 {...crystalProps} />,
+    <Crystal9 {...crystalProps} />,
+    <Crystal10 {...crystalProps} />,
+    <Crystal11 {...crystalProps} />,
+    <Crystal12 {...crystalProps} />,
+    <Crystal13 {...crystalProps} />,
+  ]
+  return (
+    <>{allCrystalComponents[whatCrystal]}</>
+  )
+}
+
+export default crystalParallaxDefault
 
 // customizable shard properties on parallax canvas
 //~ location 
@@ -53,201 +144,3 @@ const feColorMatrixCrystalBackdropColor = `
 /* Positioning: left, right, top, bottom, transform: 'translateZ(1px) scale(1)',  */
 
 //* What's next: laying out crystals on parallax convas by adding styles in object and it rendering dynamically
-
-const crystalParallax: crystalParallaxT = {
-  crystalBgImg: {
-    width: '100%',
-    transform: 'translateZ(0px) scale(1)',
-    height: '840px',
-  },
-  crystals: [
-    {
-      component: <Crystal1
-        feColorMatrixDx={20}
-        feColorMatrixDy={30}
-        feColorMatrixStdDeviation={10}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(0px) scale(1)',
-        top: 30,
-        right: 400
-      },
-    },
-    {
-      component: <Crystal2
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal3
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal4
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component:
-        <Crystal5
-          feColorMatrixDx={2}
-          feColorMatrixDy={12}
-          feColorMatrixStdDeviation={2}
-          image={require("../assets/pokeballSplash.png")}
-          edgesColor={'#344EF6'} middleColor={'#F62E34'}
-          feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal6
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component:
-        <Crystal7
-          feColorMatrixDx={2}
-          feColorMatrixDy={12}
-          feColorMatrixStdDeviation={2}
-          image={require("../assets/pokeballSplash.png")}
-          edgesColor={'#344EF6'} middleColor={'#F62E34'}
-          feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal8
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal9
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal10
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal11
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal12
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(1px) scale(1)',
-        top: 30,
-        left: 100,
-      },
-    },
-    {
-      component: <Crystal13
-        feColorMatrixDx={2}
-        feColorMatrixDy={12}
-        feColorMatrixStdDeviation={2}
-        image={require("../assets/pokeballSplash.png")}
-        edgesColor={'#344EF6'} middleColor={'#F62E34'}
-        feColorMatrixBackdropColor={feColorMatrixCrystalBackdropColor} />,
-      positionInParallaxCanvas: {
-        transform: 'translateZ(4px) scale(1)',
-        top: 30,
-        left: 300,
-      },
-    },
-  ]
-}
-
-
-
-export default crystalParallax

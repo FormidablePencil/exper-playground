@@ -2,9 +2,11 @@ import React from 'react'
 import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal7({
+  onClickHandler,
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
 }: {
+  onClickHandler?: any
   image, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
@@ -30,7 +32,7 @@ function Crystal7({
         <g id="Shard_7" data-name="Shard 7">
           <polygon fill={edgesColor} filter="url(#filter-crystal7)"
             points="319.85 217.73 424.49 168.21 516.52 95.8 519.33 89.03 348.11 78.28 149.8 132.01 98.88 240.39 213.1 317.94 257.48 414.41 356.29 323.51 319.85 217.73" />
-          <g className="cls-5-crystal7">
+          <g onClick={onClickHandler} className="cls-5-crystal7">
             <g className="cls-6">
               <polygon fill={middleColor}
                 points="319.85 217.73 424.49 168.21 516.52 95.8 519.33 89.03 348.11 78.28 149.8 132.01 98.88 240.39 213.1 317.94 257.48 414.41 356.29 323.51 319.85 217.73" />
