@@ -3,7 +3,7 @@ import crystalParallax from '../constants/crystalParallax'
 
 export const SvgSizingWrapper = ({ children }) => {
   return (
-    <svg style={{ width: 300 }} viewBox="0 0 500 500">
+    <svg style={{ width: 300 }} viewBox="0 0 200 500">
       {children}
     </svg>
   )
@@ -12,9 +12,9 @@ export const SvgSizingWrapper = ({ children }) => {
 function Crystals() {
   return (
     <div>
-      {crystalParallax.crystals.map((component, index) =>
-      <SvgSizingWrapper key={index}>
-          {component}
+      {crystalParallax.crystals.map((props, index) =>
+        <SvgSizingWrapper key={index}>
+          {props.component}
         </SvgSizingWrapper>
       )}
     </div>

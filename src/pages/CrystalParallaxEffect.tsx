@@ -8,22 +8,11 @@ function CrystalParallaxEffect() {
 
   const RenderCrystalsDynamically = () =>
     <>
-      {crystalParallax.crystals.map((item, index) => {
-        if (item.component)
-          return <div key={index} className={classes.parallaxItem} style={item.styles}>
-            <SvgSizingWrapper>{item.component}</SvgSizingWrapper>
-          </div>
-        else
-          return (
-            <img
-              key={index}
-              className={classes.parallaxItem}
-              style={item.styles}
-              src={item.image}
-              alt={item.alt}
-            />
-          )
-      })}
+      {crystalParallax.crystals.map((props, index) =>
+        <div key={index} className={classes.parallaxItem} style={props.positionInParallaxCanvas}>
+          <SvgSizingWrapper>{props.component}</SvgSizingWrapper>
+        </div>
+      )}
     </>
 
   return (
@@ -38,6 +27,7 @@ function CrystalParallaxEffect() {
           }} />
 
         <RenderCrystalsDynamically />
+
       </div>
     </div>
   )
