@@ -29,7 +29,7 @@ function Crystal13({
           </g>
         </mask>
       </defs>
-      <title>Crystal in singular</title>
+      <title>crystal 13</title>
       <g className="cls-1">
         <g id="Shard_4" data-name="Shard 4">
           <polygon fill={edgesColor} filter="url(#filter-crystal13)"

@@ -1,64 +1,76 @@
 import { Grid, makeStyles, Switch, TextField, Typography } from '@material-ui/core';
 import React from 'react'
 import { crystalParallaxT } from '../../constants/crystalParallax';
-import ModifyCrystalInputFields from './ModifyCrystalInputFields';
+import ModifyCrystalInputFields from './modeCrystalInputFields/ModifyCrystalInputFields';
 import { selectedForModeColorsT } from '../../hooks/useParallaxProperties';
-
-/* //~ feature to allow one to mess with the parallax effect */
-/* //* Later on, copy code into cms and POST req to db upon clicking save */
+import ToggleModMenu from './ToggleModMenu';
 
 function ParallaxGui({
+  deleteCrystal,
+  addSpecificCrystal,
   crystalIndex, setCrystalIndex,
   onChangeCrystalProps, crystalProps,
   crystalSelectionDistinction, setCrystalSelectionDistinction,
   setSelectedForModeColors,
-  selectedForModeColors
+  selectedForModeColors,
+  modMenuFixed, setModMenuFixed
 }: {
+  deleteCrystal,
+  addSpecificCrystal,
   crystalIndex, setCrystalIndex,
   onChangeCrystalProps, crystalProps?: crystalParallaxT,
   crystalSelectionDistinction, setCrystalSelectionDistinction,
   setSelectedForModeColors,
-  selectedForModeColors
+  selectedForModeColors,
+  modMenuFixed, setModMenuFixed
 }) {
   const classes = useStyles();
 
-  // feColorMatrixDx
-  // feColorMatrixDy
-  // feColorMatrixStdDeviation
-  // feColorMatrixBackdropColor
-  // edgesColor
-  // middleColor
-  //* image
+  const onChangeCrystalIndex = (e: any) => {
+    let int
+    int = parseInt(e.target.value)
+    if (e.target.value.length === 0)
+      return setCrystalIndex('')
+    else if (parseInt(e.target.value) === 1 && e.target.value !== '1')
+      int = null
 
-  // transform: translateZ(1px)
-  // transform: scale(1)
-  // top, bottom, left, right 
+    if (int) setCrystalIndex(e.target.value - 1)
+  }
 
   return (
-    <>
+    <div style={{ background: '#F8F8F8' }}>
       <ToggleCrystalSelectionDistictionBtn
         selectedForModeColors={selectedForModeColors}
         setSelectedForModeColors={setSelectedForModeColors}
         crystalSelectionDistinction={crystalSelectionDistinction}
         setCrystalSelectionDistinction={setCrystalSelectionDistinction}
       />
-      <Grid container>
-        <Grid item>
-          <Typography variant='h4'>Image:</Typography>
+      <ToggleModMenu
+        modMenuFixed={modMenuFixed}
+        setModMenuFixed={setModMenuFixed}
+      />
+
+      <Grid container className={classes.imageIndex}>
+        <Grid item className={classes.imageIndexText}>
+          <Typography variant='h4'>Component:</Typography>
         </Grid>
         <Grid item>
           <input
-            onChange={(e: any) => setCrystalIndex(e.target.value - 1)}
-            value={crystalIndex + 1}
+            onChange={onChangeCrystalIndex}
+            value={typeof crystalIndex !== 'number' ? crystalIndex : crystalIndex + 1}
             className={classes.imageSelectedToMode} />
         </Grid>
       </Grid>
-      {/* //* click on crystal to modify it's properties */}
+
       <ModifyCrystalInputFields
+        deleteCrystal={deleteCrystal}
+        addSpecificCrystal={addSpecificCrystal}
+        modMenuFixed={modMenuFixed}
         crystalProps={crystalProps.crystals[crystalIndex]}
         onChangeCrystalProps={onChangeCrystalProps}
       />
-    </>
+
+    </div>
   )
 }
 
@@ -90,13 +102,24 @@ const ToggleCrystalSelectionDistictionBtn = ({
   )
 }
 
-
 const useStyles = makeStyles((theme) => ({
   toggleSliderSection: {
     borderBottom: '1px solid #A3A3A3',
   },
   imageSelectedToMode: {
-    height: 30, width: 35, fontSize: 24
+    height: 30, width: 35, fontSize: 24,
+  },
+  imageIndex: {
+    background: 'white',
+    position: 'fixed',
+    right: 0,
+    top: 0,
+    width: 270,
+    borderRadius: '2em 0 0 2em',
+    scale: .8,
+  },
+  imageIndexText: {
+    marginLeft: 30,
   }
 }));
 

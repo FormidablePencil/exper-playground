@@ -1,26 +1,12 @@
-import React from 'react'
-import Crystal1 from '../components/crystals/Crystal1'
-import Crystal2 from '../components/crystals/Crystal2'
-import Crystal3 from '../components/crystals/Crystal3'
-import Crystal4 from '../components/crystals/Crystal4'
-import Crystal5 from '../components/crystals/Crystal5'
-import Crystal6 from '../components/crystals/Crystal6'
-import Crystal7 from '../components/crystals/Crystal7'
-import Crystal8 from '../components/crystals/Crystal8'
-import Crystal9 from '../components/crystals/Crystal9'
-import Crystal10 from '../components/crystals/Crystal10'
-import Crystal11 from '../components/crystals/Crystal11'
-import Crystal12 from '../components/crystals/Crystal13'
-import Crystal13 from '../components/crystals/Crystal12'
-
-interface SelectCrystalT {
+export interface SelectCrystalT {
   feColorMatrixDx,
   feColorMatrixDy, feColorMatrixStdDeviation,
   image, edgesColor, middleColor, feColorMatrixBackdropColor
 }
 
 export interface crystalPositionOnParallaxCanvasT {
-  componentProps: SelectCrystalT
+  shardIndex: number
+  crystalProps: SelectCrystalT
   positionInParallaxCanvas: {
     transform: {
       scale: string | number
@@ -53,6 +39,30 @@ const feColorMatrixCrystalBackdropColor = `
 
 export const totalCrystals = 13
 
+export const defaultCrystalProps: crystalPositionOnParallaxCanvasT = {
+  shardIndex: 0,
+  crystalProps: {
+    feColorMatrixDx: 2,
+    feColorMatrixDy: 4,
+    feColorMatrixStdDeviation: 1,
+    image: require("../assets/pokeballSplash.png"),
+    edgesColor: '#5C8AE4', middleColor: '#F62E34',
+    feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+  },
+  positionInParallaxCanvas: {
+    transform: {
+      scale: 2,
+      translateZ: 1
+    },/* 'translateZ(1px) scale(1)' */
+    xYPosition: {
+      top: '100px',
+      bottom: '',
+      left: '100px',
+      right: '',
+    }
+  }
+}
+
 const crystalParallaxDefault: crystalParallaxT = {
   crystalBgImg: {
     width: '100%',
@@ -61,29 +71,77 @@ const crystalParallaxDefault: crystalParallaxT = {
   },
   crystals: [
     {
-      componentProps: {
+      shardIndex: 12,
+      crystalProps: {
         feColorMatrixDx: 2,
-        feColorMatrixDy: 12,
-        feColorMatrixStdDeviation: 2,
+        feColorMatrixDy: 4,
+        feColorMatrixStdDeviation: 1,
         image: require("../assets/pokeballSplash.png"),
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
       },
       positionInParallaxCanvas: {
         transform: {
-          scale: 4,
+          scale: 2,
           translateZ: 1
         },/* 'translateZ(1px) scale(1)' */
         xYPosition: {
-          top: 100,
-          bottom: null,
-          left: null,
-          right: 100,
+          top: '100px',
+          bottom: '',
+          left: '100px',
+          right: '',
         }
       },
     },
     {
-      componentProps: {
+      shardIndex: 2,
+      crystalProps: {
+        feColorMatrixDx: 2,
+        feColorMatrixDy: 4,
+        feColorMatrixStdDeviation: 1,
+        image: require("../assets/pokeballSplash.png"),
+        edgesColor: '#5C8AE4', middleColor: '#F62E34',
+        feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+      },
+      positionInParallaxCanvas: {
+        transform: {
+          scale: 2,
+          translateZ: 1
+        },/* 'translateZ(1px) scale(1)' */
+        xYPosition: {
+          top: '100px',
+          bottom: '',
+          left: '100px',
+          right: '',
+        }
+      },
+    },
+    {
+      shardIndex: 4,
+      crystalProps: {
+        feColorMatrixDx: 2,
+        feColorMatrixDy: 4,
+        feColorMatrixStdDeviation: 1,
+        image: require("../assets/pokeballSplash.png"),
+        edgesColor: '#5C8AE4', middleColor: '#F62E34',
+        feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+      },
+      positionInParallaxCanvas: {
+        transform: {
+          scale: 2,
+          translateZ: 1
+        },/* 'translateZ(1px) scale(1)' */
+        xYPosition: {
+          top: '100px',
+          bottom: '',
+          left: '100px',
+          right: '',
+        }
+      },
+    },
+    {
+      shardIndex: 1,
+      crystalProps: {
         feColorMatrixDx: 2,
         feColorMatrixDy: 12,
         feColorMatrixStdDeviation: 2,
@@ -93,41 +151,20 @@ const crystalParallaxDefault: crystalParallaxT = {
       },
       positionInParallaxCanvas: {
         transform: {
-          scale: 1,
+          scale: .75,
           translateZ: 3
         },/* 'translateZ(1px) scale(1)' */
         xYPosition: {
-          top: 100,
-          bottom: null,
-          left: 100,
-          right: null,
+          top: '100px',
+          bottom: '',
+          left: '',
+          right: '800px',
         }
       },
     },
   ]
 }
 
-export const SelectCrystal = ({ onClickHandler, whatCrystal, componentProps }: { onClickHandler?: Function, whatCrystal: number, componentProps: SelectCrystalT }) => {
-  const crystalProps = { onClickHandler, ...componentProps }
-  const allCrystalComponents = [
-    <Crystal1 {...crystalProps} />,
-    <Crystal2 {...crystalProps} />,
-    <Crystal3 {...crystalProps} />,
-    <Crystal4 {...crystalProps} />,
-    <Crystal5 {...crystalProps} />,
-    <Crystal6 {...crystalProps} />,
-    <Crystal7 {...crystalProps} />,
-    <Crystal8 {...crystalProps} />,
-    <Crystal9 {...crystalProps} />,
-    <Crystal10 {...crystalProps} />,
-    <Crystal11 {...crystalProps} />,
-    <Crystal12 {...crystalProps} />,
-    <Crystal13 {...crystalProps} />,
-  ]
-  return (
-    <>{allCrystalComponents[whatCrystal]}</>
-  )
-}
 
 export default crystalParallaxDefault
 
@@ -144,3 +181,23 @@ export default crystalParallaxDefault
 /* Positioning: left, right, top, bottom, transform: 'translateZ(1px) scale(1)',  */
 
 //* What's next: laying out crystals on parallax convas by adding styles in object and it rendering dynamically
+
+  // feColorMatrixDx
+  // feColorMatrixDy
+  // feColorMatrixStdDeviation
+  // feColorMatrixBackdropColor
+  // edgesColor
+  // middleColor
+
+  // transform: translateZ(1px)
+  // transform: scale(1)
+  // top, bottom, left, right 
+
+  //% left to do:
+
+  // image
+
+  // image sizing and positioning
+  // zIndex
+
+  //responsive designing

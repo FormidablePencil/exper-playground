@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import crystalParallaxDefault, { SelectCrystal, totalCrystals } from '../constants/crystalParallax'
+import SelectCrystal from '../components/crystals/SelectCrystal'
+import crystalParallaxDefault from '../constants/crystalParallax'
+import { mapOverTotalOfCrystals } from '../helpers/mapOverTotalOfCrystals'
 
 export const SvgSizingWrapper = ({ children, overrideStyles }: { children, overrideStyles?: any }) => {
   return (
@@ -12,27 +14,17 @@ export const SvgSizingWrapper = ({ children, overrideStyles }: { children, overr
 function Crystals() {
   const [arrToMapOver, setArrToMapOver] = useState([])
 
-  const mapOverTotalOfCrystals: any = () => {
-    let arrToMapOver = []
-    for (let i = 0; i < totalCrystals; i++) {
-      arrToMapOver.push(1)
-      console.log(arrToMapOver);
-    }
-    return arrToMapOver
-  }
-
   useEffect(() => {
-    const res = mapOverTotalOfCrystals()
-    setArrToMapOver(res)
+    const createdArr = mapOverTotalOfCrystals()
+    setArrToMapOver(createdArr)
   }, [])
 
   return (
     <div>
       {arrToMapOver.map((props, index) =>
         <SvgSizingWrapper overrideStyles={{
-          marginBottom: -500,
         }} key={index}>
-          <SelectCrystal whatCrystal={index} componentProps={crystalParallaxDefault.crystals[0].componentProps} />
+          <SelectCrystal whatCrystal={index} crystalProps={crystalParallaxDefault.crystals[0].crystalProps} />
         </SvgSizingWrapper>
       )}
     </div>
