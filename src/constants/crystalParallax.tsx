@@ -1,11 +1,19 @@
 export interface SelectCrystalT {
   feColorMatrixDx,
   feColorMatrixDy, feColorMatrixStdDeviation,
-  image, edgesColor, middleColor, feColorMatrixBackdropColor
+  edgesColor, middleColor, feColorMatrixBackdropColor
+  imageProps: {
+    image: string
+    x: number
+    y: number
+    height: number
+    width: number
+  }
 }
 
 export interface crystalPositionOnParallaxCanvasT {
   shardIndex: number
+  zIndex: number
   crystalProps: SelectCrystalT
   positionInParallaxCanvas: {
     transform: {
@@ -39,13 +47,20 @@ const feColorMatrixCrystalBackdropColor = `
 
 export const totalCrystals = 13
 
-export const defaultCrystalProps: crystalPositionOnParallaxCanvasT = {
+export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
   shardIndex: 0,
+  zIndex: 0,
   crystalProps: {
+    imageProps: {
+      image: require("../assets/pokeballSplash.png"),
+      x: 50,
+      y: 10,
+      height: 225,
+      width: 225,
+    },
     feColorMatrixDx: 2,
     feColorMatrixDy: 4,
     feColorMatrixStdDeviation: 1,
-    image: require("../assets/pokeballSplash.png"),
     edgesColor: '#5C8AE4', middleColor: '#F62E34',
     feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
   },
@@ -72,11 +87,18 @@ const crystalParallaxDefault: crystalParallaxT = {
   crystals: [
     {
       shardIndex: 12,
+      zIndex: 0,
       crystalProps: {
+        imageProps: {
+          image: require("../assets/pokeballSplash.png"),
+          x: 50,
+          y: 10,
+          height: 225,
+          width: 225,
+        },
         feColorMatrixDx: 2,
         feColorMatrixDy: 4,
         feColorMatrixStdDeviation: 1,
-        image: require("../assets/pokeballSplash.png"),
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
       },
@@ -95,11 +117,18 @@ const crystalParallaxDefault: crystalParallaxT = {
     },
     {
       shardIndex: 2,
+      zIndex: 0,
       crystalProps: {
+        imageProps: {
+          image: require("../assets/pokeballSplash.png"),
+          x: 50,
+          y: 10,
+          height: 225,
+          width: 225,
+        },
         feColorMatrixDx: 2,
         feColorMatrixDy: 4,
         feColorMatrixStdDeviation: 1,
-        image: require("../assets/pokeballSplash.png"),
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
       },
@@ -118,11 +147,18 @@ const crystalParallaxDefault: crystalParallaxT = {
     },
     {
       shardIndex: 4,
+      zIndex: 0,
       crystalProps: {
+        imageProps: {
+          image: require("../assets/pokeballSplash.png"),
+          x: 50,
+          y: 10,
+          height: 225,
+          width: 225,
+        },
         feColorMatrixDx: 2,
         feColorMatrixDy: 4,
         feColorMatrixStdDeviation: 1,
-        image: require("../assets/pokeballSplash.png"),
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
       },
@@ -141,11 +177,18 @@ const crystalParallaxDefault: crystalParallaxT = {
     },
     {
       shardIndex: 1,
+      zIndex: 0,
       crystalProps: {
+        imageProps: {
+          image: require("../assets/pokeballSplash.png"),
+          x: 50,
+          y: 10,
+          height: 225,
+          width: 225,
+        },
         feColorMatrixDx: 2,
         feColorMatrixDy: 12,
         feColorMatrixStdDeviation: 2,
-        image: require("../assets/pokeballSplash.png"),
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
       },
@@ -168,36 +211,6 @@ const crystalParallaxDefault: crystalParallaxT = {
 
 export default crystalParallaxDefault
 
-// customizable shard properties on parallax canvas
-//~ location 
-//~ size
-//~ shadow color, position and deviation of all
-//~ images
-//~ edgeColor
-//~ middleColor
-//~ what shard
-//~ option to add more space down bottom
-
-/* Positioning: left, right, top, bottom, transform: 'translateZ(1px) scale(1)',  */
-
-//* What's next: laying out crystals on parallax convas by adding styles in object and it rendering dynamically
-
-  // feColorMatrixDx
-  // feColorMatrixDy
-  // feColorMatrixStdDeviation
-  // feColorMatrixBackdropColor
-  // edgesColor
-  // middleColor
-
-  // transform: translateZ(1px)
-  // transform: scale(1)
-  // top, bottom, left, right 
-
   //% left to do:
-
-  // image
-
-  // image sizing and positioning
-  // zIndex
-
   //responsive designing
+  //canvas height, background image (parallaxing);

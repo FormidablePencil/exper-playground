@@ -3,11 +3,11 @@ import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal13({
   onClickHandler,
-  image, edgesColor, middleColor,
+  imageProps, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
 }: {
   onClickHandler?: any
-  image, edgesColor, middleColor,
+  imageProps, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
 }) {
@@ -39,9 +39,9 @@ function Crystal13({
             <g className="cls-6">
               <polygon fill={middleColor} points="407.63 139.72 330.92 78.16 98.44 237.89 340.74 260.46 407.63 139.72" />
               <image
-                x='50' y='10'
-                height="225"
-                xlinkHref={image}
+                y={imageProps.y} x={imageProps.x}
+                height={imageProps.height} width={imageProps.width}
+                xlinkHref={imageProps.image}
               />
             </g>
 

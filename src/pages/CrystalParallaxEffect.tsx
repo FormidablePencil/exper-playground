@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 import React from 'react'
 import ParallaxGui from '../components/crystals/ParallaxGui';
 import SelectCrystal from '../components/crystals/SelectCrystal';
-import useParallaxProperties from '../hooks/useParallaxProperties';
+import useParallaxProperties, { useParallaxPropertiesT } from '../hooks/useParallaxProperties';
 import { SvgSizingWrapper } from './Crystals';
 import cloneDeep from 'lodash/cloneDeep';
 
@@ -10,27 +10,19 @@ function CrystalParallaxEffect() {
   const classes = useStyles();
 
   const {
-    onChangeCrystalProps, crystalProps,
+    onChangeCrystalData, crystalData,
     crystalIndex, setCrystalIndex,
     crystalSelectionDistinction, setCrystalSelectionDistinction,
     selectedForModeColors, setSelectedForModeColors,
     modMenuFixed, setModMenuFixed,
     addSpecificCrystal,
     deleteCrystal,
-  }: {
-    onChangeCrystalProps, crystalProps,
-    crystalIndex, setCrystalIndex,
-    crystalSelectionDistinction, setCrystalSelectionDistinction,
-    selectedForModeColors, setSelectedForModeColors,
-    modMenuFixed, setModMenuFixed,
-    addSpecificCrystal,
-    deleteCrystal,
-  } = useParallaxProperties()
+  }: useParallaxPropertiesT = useParallaxProperties()
 
   const RenderCrystalsDynamically = ({ setCrystalIndex }) =>
     <>
-      {/* change crystalParallaxDefault to controlled: crystalProps */}
-      {crystalProps.crystals.map((props, index) => {
+      {/* change crystalParallaxDefault to controlled: crystalData */}
+      {crystalData.crystals.map((props, index) => {
         let modedPropsSelectedForEdit
         if (crystalIndex === index && crystalSelectionDistinction) {
           modedPropsSelectedForEdit = cloneDeep(props.crystalProps)
@@ -40,6 +32,7 @@ function CrystalParallaxEffect() {
 
         return (
           <div key={index} className={classes.parallaxItem} style={{
+            zIndex: props.zIndex,
             transform: `
             translateZ(${props.positionInParallaxCanvas.transform.translateZ}px) 
             scale(${props.positionInParallaxCanvas.transform.scale})
@@ -57,7 +50,7 @@ function CrystalParallaxEffect() {
       )}
     </>
 
-const parallaxCanvasHeight = '100vh'
+  const parallaxCanvasHeight = '100vh'
 
   return (
     <div>
@@ -65,10 +58,9 @@ const parallaxCanvasHeight = '100vh'
         <div className={classes.parallaxContainer}>
           <div style={{ height: parallaxCanvasHeight }} />
           <RenderCrystalsDynamically setCrystalIndex={setCrystalIndex} />
-
         </div>
-      </div>
 
+      </div>
       <ParallaxGui
         deleteCrystal={deleteCrystal}
         addSpecificCrystal={addSpecificCrystal}
@@ -76,9 +68,8 @@ const parallaxCanvasHeight = '100vh'
         selectedForModeColors={selectedForModeColors} setSelectedForModeColors={setSelectedForModeColors}
         crystalSelectionDistinction={crystalSelectionDistinction} setCrystalSelectionDistinction={setCrystalSelectionDistinction}
         crystalIndex={crystalIndex} setCrystalIndex={setCrystalIndex}
-        crystalProps={crystalProps} onChangeCrystalProps={onChangeCrystalProps}
+        crystalData={crystalData} onChangeCrystalData={onChangeCrystalData}
       />
-
     </div>
   )
 }

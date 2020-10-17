@@ -1,8 +1,10 @@
 import { Accordion, AccordionDetails, AccordionSummary, Grid, makeStyles, TextField, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
+import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalParallax';
 
-function ModImage({ onChangeCrystalProps, expandedAccordions, toggleAccodion, crystalProps }) {
+function ModImage({ onChangeCrystalData, expandedAccordions, toggleAccodion, crystalData }:
+  { onChangeCrystalData, expandedAccordions, toggleAccodion, crystalData: crystalPositionOnParallaxCanvasT }) {
   const classes = useStyles();
   return (
     <Grid item>
@@ -16,11 +18,31 @@ function ModImage({ onChangeCrystalProps, expandedAccordions, toggleAccodion, cr
           <Typography variant='h5'>Image</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <TextField
-            className={classes.imageTextField}
-            onChange={(e) => onChangeCrystalProps('image', e)}
-            value={crystalProps.crystalProps.image}
-            label='image' />
+          <Grid container direction='row'>
+            <Grid item container>
+              <TextField
+                className={classes.imageTextField}
+                onChange={(e) => onChangeCrystalData('image', e)}
+                value={crystalData.crystalProps.imageProps.image}
+                label='image' />
+            </Grid>
+            <TextField
+              onChange={(e) => onChangeCrystalData('imageX', e)}
+              value={crystalData.crystalProps.imageProps.x}
+              label='x' />
+            <TextField
+              onChange={(e) => onChangeCrystalData('imageY', e)}
+              value={crystalData.crystalProps.imageProps.y}
+              label='y' />
+            <TextField
+              onChange={(e) => onChangeCrystalData('imageWidth', e)}
+              value={crystalData.crystalProps.imageProps.width}
+              label='width' />
+            <TextField
+              onChange={(e) => onChangeCrystalData('imageHeight', e)}
+              value={crystalData.crystalProps.imageProps.height}
+              label='height' />
+          </Grid>
         </AccordionDetails>
       </Accordion>
     </Grid>

@@ -3,11 +3,11 @@ import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal10({
   onClickHandler,
-  image, edgesColor, middleColor,
+  imageProps, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
 }: {
   onClickHandler?: any
-  image, edgesColor, middleColor,
+  imageProps, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
 }) {
@@ -39,8 +39,8 @@ function Crystal10({
                 points="161.38 182.05 199.87 78.19 190.68 80.1 99.48 151.01 117.86 201.81 161.38 182.05" />
               <image
                 x='0' y='10'
-                height="225"
-                xlinkHref={image}
+                height={imageProps.height} width={imageProps.width}
+                xlinkHref={imageProps.image}
               />
             </g>
           </g>

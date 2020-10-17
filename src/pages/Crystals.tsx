@@ -22,8 +22,7 @@ function Crystals() {
   return (
     <div>
       {arrToMapOver.map((props, index) =>
-        <SvgSizingWrapper overrideStyles={{
-        }} key={index}>
+        <SvgSizingWrapper overrideStyles={{}} key={index}>
           <SelectCrystal whatCrystal={index} crystalProps={crystalParallaxDefault.crystals[0].crystalProps} />
         </SvgSizingWrapper>
       )}

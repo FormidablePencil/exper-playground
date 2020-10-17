@@ -7,9 +7,10 @@ import ModColor from './ModColor';
 import ModSize from './ModSize';
 import ModAddAndDelete from './ModAddAndDelete';
 import cloneDeep from 'lodash/cloneDeep';
+import ModImage from './ModImage';
 
-function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalProps, onChangeCrystalProps, addSpecificCrystal }:
-  { deleteCrystal, modMenuFixed, crystalProps: crystalPositionOnParallaxCanvasT, onChangeCrystalProps, addSpecificCrystal }) {
+function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalData, onChangeCrystalData, addSpecificCrystal }:
+  { deleteCrystal, modMenuFixed, crystalData: crystalPositionOnParallaxCanvasT, onChangeCrystalData, addSpecificCrystal }) {
   const classes = useStyles();
   const [expandedAccordions, setExpandedAccordions] = useState({
     shadow: false,
@@ -25,53 +26,59 @@ function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalProps, o
       const copiedExpandedAccordions = cloneDeep(expandedAccordions)
       copiedExpandedAccordions[whatAccordion] = !prev[whatAccordion]
       return copiedExpandedAccordions
-  })
-}
+    })
+  }
 
-if (crystalProps)
-  return (
-    <Container className={`${classes.modeMenu} ${modMenuFixed && classes.modeMenuFixed}`}>
-      <Grid container spacing={1} direction='column'>
+  if (crystalData)
+    return (
+      <Container className={`${classes.modeMenu} ${modMenuFixed && classes.modeMenuFixed}`}>
+        <Grid container spacing={1} direction='column'>
 
-        <ModShadow
-          crystalProps={crystalProps}
-          expandedAccordions={expandedAccordions}
-          onChangeCrystalProps={onChangeCrystalProps}
-          toggleAccodion={toggleAccodion}
-        />
-        <ModColor
-          crystalProps={crystalProps}
-          expandedAccordions={expandedAccordions}
-          onChangeCrystalProps={onChangeCrystalProps}
-          toggleAccodion={toggleAccodion}
-        />
+          <ModShadow
+            crystalData={crystalData}
+            expandedAccordions={expandedAccordions}
+            onChangeCrystalData={onChangeCrystalData}
+            toggleAccodion={toggleAccodion}
+          />
+          <ModColor
+            crystalData={crystalData}
+            expandedAccordions={expandedAccordions}
+            onChangeCrystalData={onChangeCrystalData}
+            toggleAccodion={toggleAccodion}
+          />
 
-        <ModPosition
-          onChangeCrystalProps={onChangeCrystalProps}
-          crystalProps={crystalProps}
-          expandedAccordions={expandedAccordions}
-          // onChangeCrystalProps={onChangeCrystalProps}
-          toggleAccodion={toggleAccodion}
-        />
+          <ModPosition
+            onChangeCrystalData={onChangeCrystalData}
+            crystalData={crystalData}
+            expandedAccordions={expandedAccordions}
+            toggleAccodion={toggleAccodion}
+          />
 
-        <ModSize
-          crystalProps={crystalProps}
-          expandedAccordions={expandedAccordions}
-          onChangeCrystalProps={onChangeCrystalProps}
-          toggleAccodion={toggleAccodion}
-        />
+          <ModSize
+            crystalData={crystalData}
+            expandedAccordions={expandedAccordions}
+            onChangeCrystalData={onChangeCrystalData}
+            toggleAccodion={toggleAccodion}
+          />
 
-        <ModAddAndDelete
-          deleteCrystal={deleteCrystal}
-          addSpecificCrystal={addSpecificCrystal}
-          expandedAccordions={expandedAccordions}
-          toggleAccodion={toggleAccodion}
-        />
+          <ModImage
+            onChangeCrystalData={onChangeCrystalData}
+            expandedAccordions={expandedAccordions}
+            toggleAccodion={toggleAccodion}
+            crystalData={crystalData}
+          />
 
-      </Grid>
-    </Container>
-  )
-else return <div style={{ height: 500 }} />
+          <ModAddAndDelete
+            deleteCrystal={deleteCrystal}
+            addSpecificCrystal={addSpecificCrystal}
+            expandedAccordions={expandedAccordions}
+            toggleAccodion={toggleAccodion}
+          />
+
+        </Grid>
+      </Container>
+    )
+  else return <div style={{ height: 500 }} />
 }
 
 const useStyles = makeStyles((theme) => ({

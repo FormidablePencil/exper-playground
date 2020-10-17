@@ -9,7 +9,7 @@ function ParallaxGui({
   deleteCrystal,
   addSpecificCrystal,
   crystalIndex, setCrystalIndex,
-  onChangeCrystalProps, crystalProps,
+  onChangeCrystalData, crystalData,
   crystalSelectionDistinction, setCrystalSelectionDistinction,
   setSelectedForModeColors,
   selectedForModeColors,
@@ -18,7 +18,7 @@ function ParallaxGui({
   deleteCrystal,
   addSpecificCrystal,
   crystalIndex, setCrystalIndex,
-  onChangeCrystalProps, crystalProps?: crystalParallaxT,
+  onChangeCrystalData, crystalData?: crystalParallaxT,
   crystalSelectionDistinction, setCrystalSelectionDistinction,
   setSelectedForModeColors,
   selectedForModeColors,
@@ -66,8 +66,8 @@ function ParallaxGui({
         deleteCrystal={deleteCrystal}
         addSpecificCrystal={addSpecificCrystal}
         modMenuFixed={modMenuFixed}
-        crystalProps={crystalProps.crystals[crystalIndex]}
-        onChangeCrystalProps={onChangeCrystalProps}
+        crystalData={crystalData.crystals[crystalIndex]}
+        onChangeCrystalData={onChangeCrystalData}
       />
 
     </div>

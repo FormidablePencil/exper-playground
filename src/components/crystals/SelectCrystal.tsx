@@ -1,5 +1,5 @@
 import React from 'react'
-import { defaultCrystalProps, SelectCrystalT } from "../../constants/crystalParallax"
+import { defaultCrystalData, SelectCrystalT } from "../../constants/crystalParallax"
 import Crystal1 from './Crystal1'
 import Crystal2 from './Crystal2'
 import Crystal3 from './Crystal3'
@@ -20,7 +20,7 @@ const SelectCrystal = ({ onClickHandler, whatCrystal, crystalProps }:
   { onClickHandler?: Function, whatCrystal: number, crystalProps?: SelectCrystalT }) => {
   let componentProps
   if (!crystalProps)
-    componentProps = { onClickHandler, ...defaultCrystalProps.crystalProps }
+    componentProps = { onClickHandler, ...defaultCrystalData.crystalProps }
   else
     componentProps = { onClickHandler, ...crystalProps }
 

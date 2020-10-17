@@ -2,7 +2,7 @@ import { Accordion, AccordionDetails, AccordionSummary, Grid, TextField, Typogra
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
 
-function ModColor({onChangeCrystalProps, expandedAccordions, toggleAccodion, crystalProps}) {
+function ModColor({onChangeCrystalData, expandedAccordions, toggleAccodion, crystalData}) {
   return (
     
     <Grid item>
@@ -17,9 +17,9 @@ function ModColor({onChangeCrystalProps, expandedAccordions, toggleAccodion, cry
         <Typography>
           <a href='http://andresgalante.com/RGBAtoFeColorMatrix/'>converting color to special format for backdropColor</a>
         </Typography>
-        <TextField onChange={(e) => onChangeCrystalProps('edgesColor', e)} value={crystalProps.crystalProps.edgesColor} label='edgesColor' />
-        <TextField onChange={(e) => onChangeCrystalProps('middleColor', e)} value={crystalProps.crystalProps.middleColor} label='middleColor' />
-        <TextField onChange={(e) => onChangeCrystalProps('feColorMatrixBackdropColor', e)} value={crystalProps.crystalProps.feColorMatrixBackdropColor} label='backdropColor' />
+        <TextField onChange={(e) => onChangeCrystalData('edgesColor', e)} value={crystalData.crystalProps.edgesColor} label='edgesColor' />
+        <TextField onChange={(e) => onChangeCrystalData('middleColor', e)} value={crystalData.crystalProps.middleColor} label='middleColor' />
+        <TextField onChange={(e) => onChangeCrystalData('feColorMatrixBackdropColor', e)} value={crystalData.crystalProps.feColorMatrixBackdropColor} label='backdropColor' />
       </AccordionDetails>
     </Accordion>
   </Grid>

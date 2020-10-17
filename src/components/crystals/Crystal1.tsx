@@ -3,14 +3,20 @@ import CrystalBackdrop from './CrystalBackdrop'
 
 function Crystal1({
   onClickHandler,
-  image, edgesColor, middleColor,
-  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+  edgesColor, middleColor,
+  feColorMatrixBackdropColor,
+  feColorMatrixStdDeviation,
+  feColorMatrixDx, feColorMatrixDy,
+  imageProps
 }: {
   onClickHandler?: any
-  image, edgesColor, middleColor,
-  feColorMatrixBackdropColor, feColorMatrixStdDeviation,
+  edgesColor, middleColor,
+  feColorMatrixBackdropColor,
+  feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
+  imageProps
 }) {
+  
   return (
     <>
       <svg viewBox="0 0 542 423"><defs>
@@ -36,9 +42,11 @@ function Crystal1({
         <g onClick={onClickHandler} className="cls-5-crystal1"><g className="cls-6">
           <polygon fill={middleColor} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81" />
           <image
-            x='50' y='10'
-            height="225"
-            xlinkHref={image}
+            y={imageProps.y}
+            x={imageProps.x}
+            width={imageProps.width}
+            height={imageProps.height}
+            xlinkHref={imageProps.image}
           />
 
         </g></g></g><g id="Sheens"><polygon className="cls-8" points="449.9 175.04 409.83 273.94 281.75 310.2 294.4 312.88 426.21 287.68 449.9 175.04" /><polygon className="cls-8" points="289.79 88.33 122.57 154.9 145.87 212.05 145.25 199.06 133.7 157.62 289.79 88.33" /></g></g>
