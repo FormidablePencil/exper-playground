@@ -1,7 +1,7 @@
 import { crystalParallaxT } from "../constants/crystalParallax";
 
 const crystalDataReducer = ({ action, e, crystalIndex, newState }: crystalDataReducerT) => {
-  const targetValue = e.target.value
+  const targetValue = e.target ? e.target.value : e
   const { whatProperty } = action
 
   switch (whatProperty) {

@@ -2,23 +2,24 @@ import { Accordion, AccordionDetails, AccordionSummary, Grid, TextField, Typogra
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
 
-function ModSize({onChangeCrystalData, expandedAccordions, toggleAccodion, crystalData}) {
+function ModSize({ onChangeCrystalData, expandedAccordions, toggleAccodion, crystalData }) {
   return (
     <Grid item>
-    <Accordion
-      expanded={expandedAccordions.size}
-    >
-      <AccordionSummary
-        expandIcon={<ExpandMoreIcon />}
-        onClick={() => toggleAccodion('size')}>
+      <Accordion
+        expanded={expandedAccordions.size}
+      >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          onClick={() => toggleAccodion('size')}>
 
-        <Typography variant='h5'>Size</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <TextField onChange={(e) => onChangeCrystalData('scale', e)} value={crystalData.positionInParallaxCanvas.transform.scale} label='scale' />
-      </AccordionDetails>
-    </Accordion>
-  </Grid>
+          <Typography variant='h5'>Size</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <TextField onChange={(e) => onChangeCrystalData('scale', e)} value={crystalData.positionInParallaxCanvas.transform.scale} label='scale' />
+        </AccordionDetails>
+
+      </Accordion>
+    </Grid>
 
   )
 }

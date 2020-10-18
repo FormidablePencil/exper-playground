@@ -18,15 +18,18 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
     setRawCrystalData,
   } = useCompileCrystalData()
 
+  const updateRawAndSourceOfTruthCrystalData = (newState) => {
+    setRawCrystalData(newState)
+    setCrystalData(newState)
+  }
+
   const onChangeCrystalData = ({ action }, e) => {
     let newState: crystalParallaxT = cloneDeep(crystalData);
-    
     if (action.type === 'mediaQuery')
       newState = crystalDataMediaQueryReducer({ action, e, crystalIndex, newState })
     else
       newState = crystalDataReducer({ action, e, crystalIndex, newState })
-    setRawCrystalData(newState)
-    setCrystalData(newState)
+    updateRawAndSourceOfTruthCrystalData(newState)
   }
 
   const addSpecificCrystal = (index) => {
@@ -34,13 +37,14 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
     const newComponent = cloneDeep(defaultCrystalData)
     newComponent.shardIndex = index
     newState.crystals[newState.crystals.length] = newComponent
-    setRawCrystalData(newState)
+    updateRawAndSourceOfTruthCrystalData(newState)
     setCrystalIndex(newState.crystals.length - 1)
   }
 
   const deleteCrystal = () => {
     let newState = cloneDeep(crystalData)
     newState.crystals.splice(crystalIndex, 1)
+    updateRawAndSourceOfTruthCrystalData(newState)
     setRawCrystalData(newState)
     setCrystalIndex(prev => prev - 1)
   }

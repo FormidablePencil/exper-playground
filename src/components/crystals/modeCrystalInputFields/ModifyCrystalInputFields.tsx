@@ -5,7 +5,7 @@ import ModPosition from './ModPosition';
 import ModShadow from './ModShadow';
 import ModColor from './ModColor';
 import ModSize from './ModSize';
-import ModAddAndDelete from './ModAddAndDelete';
+import ModAddChangeDelete from './ModAddChangeDelete';
 import cloneDeep from 'lodash/cloneDeep';
 import ModImage from './ModImage';
 
@@ -68,7 +68,8 @@ function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalData, on
             crystalData={crystalData}
           />
 
-          <ModAddAndDelete
+          <ModAddChangeDelete
+            onChangeCrystalData={onChangeCrystalData}
             deleteCrystal={deleteCrystal}
             addSpecificCrystal={addSpecificCrystal}
             expandedAccordions={expandedAccordions}
@@ -87,7 +88,7 @@ const useStyles = makeStyles((theme) => ({
   modeMenuFixed: {
     position: 'fixed',
     right: 0,
-    top: 50,
+    top: 20,
     width: 500,
     scale: .8,
   },
