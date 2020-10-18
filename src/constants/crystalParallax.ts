@@ -11,6 +11,37 @@ export interface SelectCrystalT {
   }
 }
 
+export interface mediaQueriesSelectCrystalT {
+  feColorMatrixDx?,
+  feColorMatrixDy?, feColorMatrixStdDeviation?,
+  edgesColor?, middleColor?, feColorMatrixBackdropColor?,
+  imageProps?: {
+    image?: string
+    x?: number
+    y?: number
+    height?: number
+    width?: number
+  }
+}
+
+export interface mediaQueriesDataAppentionT {
+  mediaQueryWidth?: number
+  shardIndex?: number
+  zIndex?: number
+  crystalProps?: mediaQueriesSelectCrystalT
+  positionInParallaxCanvas?: {
+    transform?: {
+      scale?: string | number
+      translateZ?: string | number
+    }
+    xYPosition?: {
+      top?: string | number
+      bottom?: string | number
+      left?: string | number
+      right?: string | number
+    }
+  }
+}
 export interface crystalPositionOnParallaxCanvasT {
   shardIndex: number
   zIndex: number
@@ -27,6 +58,7 @@ export interface crystalPositionOnParallaxCanvasT {
       right: string | number
     }
   }
+  mediaQueries?: mediaQueriesDataAppentionT[]
 }
 
 export interface crystalParallaxT {
@@ -39,9 +71,9 @@ export interface crystalParallaxT {
 }
 
 const feColorMatrixCrystalBackdropColor = `
-0     0     0     0     0
-0     0     0     0     0
-0     0     0     0     0
+0     0     0     0     0 
+0     0     0     0     0 
+0     0     0     0     0 
 0     0     0    .2     0
 `
 
@@ -75,9 +107,39 @@ export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
       left: '100px',
       right: '',
     }
-  }
+  },
+  mediaQueries: [ /* append data for mediaQueries that is different than it's main */
+    {
+      mediaQueryWidth: 300,
+      shardIndex: 0,
+      zIndex: 0,
+      crystalProps: {
+        imageProps: {
+          x: 50,
+          y: 10,
+          height: 225,
+          width: 225,
+        },
+        feColorMatrixDx: 2,
+        feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+      },
+      positionInParallaxCanvas: {
+        transform: {
+          scale: 2,
+          translateZ: 1
+        },/* 'translateZ(1px) scale(1)' */
+        xYPosition: {
+          top: '100px',
+          bottom: '',
+          left: '100px',
+          right: '',
+        },
+      }
+    },
+  ]
 }
 
+/* dummy data */
 const crystalParallaxDefault: crystalParallaxT = {
   crystalBgImg: {
     width: '100%',
@@ -114,6 +176,35 @@ const crystalParallaxDefault: crystalParallaxT = {
           right: '',
         }
       },
+      mediaQueries: [ /* append data for mediaQueries that is different than it's main */
+        {
+          mediaQueryWidth: 300,
+          shardIndex: 0,
+          zIndex: 0,
+          crystalProps: {
+            imageProps: {
+              x: 50,
+              y: 10,
+              height: 225,
+              width: 225,
+            },
+            feColorMatrixDx: 2,
+            feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
+          },
+          positionInParallaxCanvas: {
+            transform: {
+              scale: 2,
+              translateZ: 1
+            },/* 'translateZ(1px) scale(1)' */
+            xYPosition: {
+              top: '100px',
+              bottom: '',
+              left: '100px',
+              right: '',
+            },
+          }
+        },
+      ]
     },
     {
       shardIndex: 2,
@@ -144,6 +235,7 @@ const crystalParallaxDefault: crystalParallaxT = {
           right: '',
         }
       },
+      mediaQueries: []
     },
     {
       shardIndex: 4,
@@ -174,6 +266,7 @@ const crystalParallaxDefault: crystalParallaxT = {
           right: '',
         }
       },
+      mediaQueries: []
     },
     {
       shardIndex: 1,
@@ -204,6 +297,7 @@ const crystalParallaxDefault: crystalParallaxT = {
           right: '800px',
         }
       },
+      mediaQueries: []
     },
   ]
 }
@@ -212,5 +306,12 @@ const crystalParallaxDefault: crystalParallaxT = {
 export default crystalParallaxDefault
 
   //% left to do:
-  //responsive designing
   //canvas height, background image (parallaxing);
+
+  //responsive designing: make gui to add media queries
+  // Here's the plan:
+  // append all additional data to the crystalData. 
+  // There will be another source of truth that get's compiled everytime according to the screen size.
+  // The source of truth will be the appened data plus primary data.
+
+  // User will be able to make as many media queries at they like.
