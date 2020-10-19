@@ -1,10 +1,15 @@
 import { makeStyles } from '@material-ui/core';
-import React from 'react'
+import React, { createContext } from 'react'
 import ParallaxGui from '../components/crystals/ParallaxGui';
 import SelectCrystal from '../components/crystals/SelectCrystal';
 import useParallaxProperties, { useParallaxPropertiesT } from '../hooks/useParallaxProperties';
 import { SvgSizingWrapper } from './Crystals';
 import cloneDeep from 'lodash/cloneDeep';
+import RenderCrystalsDynamically from '../components/crystals/RenderCrystalsDynamically';
+import { crystalParallaxT } from '../constants/crystalParallax';
+
+export const WindowWidthContext = createContext({ windowWidth: 0 })
+export const CrystalDataContext = createContext<any>({ crystalData: {} })
 
 function CrystalParallaxEffect() {
   const classes = useStyles();
@@ -17,60 +22,39 @@ function CrystalParallaxEffect() {
     modMenuFixed, setModMenuFixed,
     addSpecificCrystal,
     deleteCrystal,
+    windowWidth,
   }: useParallaxPropertiesT = useParallaxProperties()
-
-  const RenderCrystalsDynamically = ({ setCrystalIndex }) =>
-    <>
-      {/* change crystalParallaxDefault to controlled: crystalData */}
-      {crystalData.crystals.map((props, index) => {
-        let modedPropsSelectedForEdit
-        if (crystalIndex === index && crystalSelectionDistinction) {
-          modedPropsSelectedForEdit = cloneDeep(props.crystalProps)
-          modedPropsSelectedForEdit.edgesColor = selectedForModeColors.edge
-          modedPropsSelectedForEdit.middleColor = selectedForModeColors.middle
-        }
-
-        return (
-          <div key={index} className={classes.parallaxItem} style={{
-            zIndex: props.zIndex,
-            transform: `
-            translateZ(${props.positionInParallaxCanvas.transform.translateZ}px) 
-            scale(${props.positionInParallaxCanvas.transform.scale})
-            `,
-            ...props.positionInParallaxCanvas.xYPosition
-          }}>
-            <SvgSizingWrapper>
-              <SelectCrystal
-                onClickHandler={() => setCrystalIndex(index)}
-                whatCrystal={props.shardIndex} crystalProps={modedPropsSelectedForEdit ?? props.crystalProps} />
-            </SvgSizingWrapper>
-          </div>
-        )
-      }
-      )}
-    </>
 
   const parallaxCanvasHeight = '100vh'
 
   return (
-    <div>
-      <div className={classes.container}>
-        <div className={classes.parallaxContainer}>
-          <div style={{ height: parallaxCanvasHeight }} />
-          <RenderCrystalsDynamically setCrystalIndex={setCrystalIndex} />
-        </div>
+    <WindowWidthContext.Provider value={{ windowWidth }}>
+      <CrystalDataContext.Provider value={{ crystalData }}>
+        <div>
+          <div className={classes.container}>
+            <div className={classes.parallaxContainer}>
+              <div style={{ height: parallaxCanvasHeight }} />
+              <RenderCrystalsDynamically
+                selectedForModeColors={selectedForModeColors}
+                crystalIndex={crystalIndex}
+                crystalSelectionDistinction={crystalSelectionDistinction}
+                crystalData={crystalData}
+                setCrystalIndex={setCrystalIndex} />
+            </div>
 
-      </div>
-      <ParallaxGui
-        deleteCrystal={deleteCrystal}
-        addSpecificCrystal={addSpecificCrystal}
-        modMenuFixed={modMenuFixed} setModMenuFixed={setModMenuFixed}
-        selectedForModeColors={selectedForModeColors} setSelectedForModeColors={setSelectedForModeColors}
-        crystalSelectionDistinction={crystalSelectionDistinction} setCrystalSelectionDistinction={setCrystalSelectionDistinction}
-        crystalIndex={crystalIndex} setCrystalIndex={setCrystalIndex}
-        crystalData={crystalData} onChangeCrystalData={onChangeCrystalData}
-      />
-    </div>
+          </div>
+          <ParallaxGui
+            deleteCrystal={deleteCrystal}
+            addSpecificCrystal={addSpecificCrystal}
+            modMenuFixed={modMenuFixed} setModMenuFixed={setModMenuFixed}
+            selectedForModeColors={selectedForModeColors} setSelectedForModeColors={setSelectedForModeColors}
+            crystalSelectionDistinction={crystalSelectionDistinction} setCrystalSelectionDistinction={setCrystalSelectionDistinction}
+            crystalIndex={crystalIndex} setCrystalIndex={setCrystalIndex}
+            crystalData={crystalData} onChangeCrystalData={onChangeCrystalData}
+          />
+        </div>
+      </CrystalDataContext.Provider>
+    </WindowWidthContext.Provider>
   )
 }
 
@@ -88,9 +72,6 @@ const useStyles = makeStyles((theme) => ({
     overflowY: 'scroll',
     perspective: '8px',
     perspectiveOrigin: '0%',
-  },
-  parallaxItem: {
-    position: "absolute",
   },
 }));
 

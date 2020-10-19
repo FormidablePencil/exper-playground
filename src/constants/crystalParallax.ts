@@ -346,5 +346,8 @@ const crystalParallaxDefault: crystalParallaxT = {
 export default crystalParallaxDefault
 
   //% left to do:
-  // ~ if no crystals, then show btn to add one (default one)
-  //canvas height, background image (parallaxing);
+  //~ read the crystalData for mediaQuery indead for picking reducers
+  // ~ gui for media queries
+  // if no crystals, then show btn to add one (default one)
+  // canvas height, background image (parallaxing);
+  // check to see if all works

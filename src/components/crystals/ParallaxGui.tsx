@@ -66,7 +66,7 @@ function ParallaxGui({
         deleteCrystal={deleteCrystal}
         addSpecificCrystal={addSpecificCrystal}
         modMenuFixed={modMenuFixed}
-        crystalData={crystalData.crystals[crystalIndex]}
+        crystalProps={crystalData.crystals[crystalIndex]}
         onChangeCrystalData={onChangeCrystalData}
       />
 

@@ -4,18 +4,7 @@ const crystalDataMediaQueryReducer = ({ action, e, crystalIndex, newState }: cry
   const { mediaQueryWidth, whatProperty } = action
   const targetValue = e.target.value
 
-  if (whatProperty === 'addMediaQuery') {
-    newState.crystals[crystalIndex].mediaQueries.push({
-      mediaQueryWidth: targetValue
-    })
-    return newState
-  } else if (whatProperty === 'removeMediaQuery') {
-    newState.crystals[crystalIndex].mediaQueries.filter(item =>
-      item.mediaQueryWidth !== mediaQueryWidth)
-    return newState
-  }
-
-  newState.crystals[whatProperty].mediaQueries.map(data => {
+  newState.crystals[crystalIndex].mediaQueries.map(data => {
     if (data.mediaQueryWidth === mediaQueryWidth) {
       switch (action.whatProperty) {
         case 'feColorMatrixDx':

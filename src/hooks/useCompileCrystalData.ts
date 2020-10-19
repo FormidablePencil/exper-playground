@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import crystalParallaxDefault, { crystalParallaxT } from "../constants/crystalParallax"
 import cloneDeep from 'lodash/cloneDeep';
-import useWindowSize from "./useWindowSize";
 
-const useCompileCrystalData = () => {
+const useCompileCrystalData = ({ windowWidth }) => {
   const [rawCrystalData, setRawCrystalData] = useState<crystalParallaxT>(crystalParallaxDefault)
   const [crystalData, setCrystalData] = useState<crystalParallaxT>({
     crystalBgImg: {
@@ -73,7 +72,6 @@ const useCompileCrystalData = () => {
   }
 
 
-  const windowWidth = useWindowSize().width
   /* compile only when screen width === mediaQuery that's stored in rawCrystalData */
   useEffect(() => {
     updateCrystalAccordingToMediaQueries()

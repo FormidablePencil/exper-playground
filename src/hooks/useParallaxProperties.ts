@@ -1,9 +1,11 @@
 import { useState } from 'react'
-import crystalParallaxDefault, { crystalParallaxT, defaultCrystalData } from '../constants/crystalParallax'
+import { crystalParallaxT, defaultCrystalData } from '../constants/crystalParallax'
 import cloneDeep from 'lodash/cloneDeep';
 import crystalDataReducer from '../helpers/crystalDataReducer';
 import crystalDataMediaQueryReducer from '../helpers/crystalDataMediaQueryReducer';
 import useCompileCrystalData from '../hooks/useCompileCrystalData';
+import useWindowSize from './useWindowSize';
+import uniqueMediaQuery from '../helpers/uniqueMediaQuery';
 
 export interface selectedForModeColorsT { middle, edge }
 
@@ -13,24 +15,57 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
   const [selectedForModeColors, setSelectedForModeColors] = useState<selectedForModeColorsT>({ middle: '#000000', edge: '#FFFFFF' })
   const [modMenuFixed, setModMenuFixed] = useState(true)
 
+  const windowWidth = useWindowSize().width
+
   const {
     setCrystalData, crystalData,
     setRawCrystalData,
-  } = useCompileCrystalData()
+  } = useCompileCrystalData({ windowWidth })
+
 
   const updateRawAndSourceOfTruthCrystalData = (newState) => {
     setRawCrystalData(newState)
     setCrystalData(newState)
   }
 
+  // % save new mediaQuery values 
+
+  const updateMediaQueryValues = (action, newState: crystalParallaxT) => {
+    const { payload } = action
+    // find mediaQuery by intial value and change it at for the moded (map function)
+    payload.map(item => {
+      newState.crystals[crystalIndex].mediaQueries.map(mediaQuery => {
+        if (mediaQuery.mediaQueryWidth === item.initial)
+          mediaQuery.mediaQueryWidth = item.mod
+        return mediaQuery
+      })
+      return item
+    })
+    return newState
+  }
+
   const onChangeCrystalData = ({ action }, e) => {
     let newState: crystalParallaxT = cloneDeep(crystalData);
-    if (action.type === 'mediaQuery')
+
+    if (action.type === 'update mediaQuery values') {
+
+      newState = updateMediaQueryValues(action, newState)
+
+    } else if (action.type === 'addMediaQuery') {
+      newState.crystals[crystalIndex].mediaQueries.push({
+        mediaQueryWidth: uniqueMediaQuery({ crystalData, crystalIndex })/* must be different than any other mediaQueryWidth */
+      })
+    } else if (action.type === 'removeMediaQuery') {
+      newState.crystals[crystalIndex].mediaQueries = newState.crystals[crystalIndex].mediaQueries.filter(item =>
+        item.mediaQueryWidth !== action.mediaQueryWidth)
+    } else if (crystalData.crystals[crystalIndex].mediaQueryWidth)/* if mediaQuery present */
       newState = crystalDataMediaQueryReducer({ action, e, crystalIndex, newState })
     else
       newState = crystalDataReducer({ action, e, crystalIndex, newState })
+    // console.log(newState)
     updateRawAndSourceOfTruthCrystalData(newState)
   }
+
 
   const addSpecificCrystal = (index) => {
     let newState = cloneDeep(crystalData)
@@ -40,6 +75,7 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
     updateRawAndSourceOfTruthCrystalData(newState)
     setCrystalIndex(newState.crystals.length - 1)
   }
+
 
   const deleteCrystal = () => {
     let newState = cloneDeep(crystalData)
@@ -57,6 +93,7 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
     modMenuFixed, setModMenuFixed,
     addSpecificCrystal,
     deleteCrystal,
+    windowWidth,
   }
 }
 
@@ -70,4 +107,5 @@ export interface useParallaxPropertiesT {
   modMenuFixed, setModMenuFixed,
   addSpecificCrystal,
   deleteCrystal,
+  windowWidth,
 }
