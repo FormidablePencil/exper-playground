@@ -20,9 +20,9 @@ const SelectCrystal = ({ onClickHandler, whatCrystal, crystalProps }:
   { onClickHandler?: Function, whatCrystal: number, crystalProps?: SelectCrystalT }) => {
   let componentProps
   if (!crystalProps)
-    componentProps = { onClickHandler, ...defaultCrystalData.crystalProps }
+    componentProps = { onClickHandler, ...defaultCrystalData.crystalProps, browserNotSupported: true }
   else
-    componentProps = { onClickHandler, ...crystalProps }
+    componentProps = { onClickHandler, ...crystalProps, browserNotSupported: true }
 
   const allCrystalComponents = [
     <Crystal1 {...componentProps} />,

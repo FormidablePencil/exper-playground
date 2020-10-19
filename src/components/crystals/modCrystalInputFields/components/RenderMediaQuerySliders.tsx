@@ -15,7 +15,7 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
       prevItem.initial === key ? { mod: newValue, initial: prevItem.initial } : prevItem))
   }
 
-  
+
   const saveSliderValue = () => {
     const moddedMediaQueryValues = sliderValues.filter(item => item.initial !== item.mod && item.mod)
     dispatchCrystalData({ type: 'update mediaQuery values', payload: { moddedMediaQueryValues } })
@@ -27,7 +27,7 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
     dispatchCrystalData({ type: 'addMediaQuery', payload: null })
     setReadyToSave(false) /* save current slider values and create new mediaQuery */
   }
-  
+
 
   const onClickDeleteMediaQueryHandler = (mediaQueryWidth) => {
     dispatchCrystalData({ type: 'removeMediaQuery', payload: { mediaQueryWidth } })
@@ -58,7 +58,7 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
       return value
     })
   }, [sliderValues])
-  
+
   return (
     <>
       <Typography
@@ -67,12 +67,12 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
         Original
         </Typography>
 
-      {selectedCrystalProps.mediaQueries.map(mediaQuery => {
+      {selectedCrystalProps.mediaQueries.map((mediaQuery) => {
         let currentMQApplied = false
         if (mediaQuery.mediaQueryWidth === selectedCrystalProps.mediaQueryWidth)
           currentMQApplied = true
         return (
-          <Grid container direction='row' wrap='nowrap'>
+          <Grid key={mediaQuery.mediaQueryWidth} container direction='row' wrap='nowrap'>
             <Grid item container>
               <Slider
                 color={currentMQApplied ? 'secondary' : 'primary'}

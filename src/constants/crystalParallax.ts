@@ -45,7 +45,7 @@ export interface mediaQueriesDataAppentionT {
   }
 }
 export interface crystalPositionOnParallaxCanvasT {
-  mediaQueryWidth: null,
+  mediaQueryWidth: string | number,
   key: number,
   shardIndex: number
   zIndex: number
@@ -87,7 +87,7 @@ const feColorMatrixCrystalBackdropColor = `
 export const totalCrystals = 13
 
 export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
-  mediaQueryWidth: null,
+  mediaQueryWidth: '',
   key: 9,
   shardIndex: 0,
   zIndex: 0,
@@ -110,7 +110,7 @@ export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
       scale: 2,
       translateZ: 1,
       rotateY: false,
-      rotate: null,
+      rotate: '',
     },/* 'translateZ(1px) scale(1)' */
     xYPosition: {
       top: '100px',
@@ -154,14 +154,14 @@ export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
 /* dummy data */
 const crystalParallaxDefault: crystalParallaxT = {
   crystalParallaxBg: {
-    backgroundColor: '#151515',
-    backgroundImage: '',
+    backgroundColor: '#373737',
+    backgroundImage: 'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v475-katie-101-abstractblackandwhitebg_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=86196a47d14e811c3149f69279f90c1e',
     bgImgX: '',
     bgImgY: '',
   },
   crystals: [
     {
-      mediaQueryWidth: null,
+      mediaQueryWidth: '',
       key: 8,
       shardIndex: 6,
       zIndex: 0,
@@ -173,8 +173,6 @@ const crystalParallaxDefault: crystalParallaxT = {
           height: 225,
           width: 225,
         },
-        // feColorMatrixDx: 2,
-        // feColorMatrixDy: 4,
         feColorMatrixDx: 5,
         feColorMatrixDy: 5,
         feColorMatrixStdDeviation: 1,
@@ -186,7 +184,7 @@ const crystalParallaxDefault: crystalParallaxT = {
           scale: 2,
           translateZ: 1,
           rotateY: false,
-          rotate: null,
+          rotate: '',
         },/* 'translateZ(1px) scale(1)' */
         xYPosition: {
           top: '100px',
@@ -216,7 +214,7 @@ const crystalParallaxDefault: crystalParallaxT = {
               scale: 2,
               translateZ: 1,
               rotateY: false,
-              rotate: null,
+              rotate: '',
             },
             xYPosition: {
               top: '100px',

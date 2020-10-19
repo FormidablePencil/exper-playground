@@ -9,6 +9,7 @@ function ModPosition({ dispatchCrystalData, expandedAccordions, toggleAccodion, 
     <Grid item container>
       <Accordion
         expanded={expandedAccordions.position}
+        style={{ width: '100%' }}
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}

@@ -17,6 +17,8 @@ const mainCrystalDataReducer = (
   switch (type) {
     case 'backgroundColor':
     case 'backgroundImage':
+    case 'bgImgX':
+    case 'bgImgY':
       newStateRaw.crystalParallaxBg[type] = payload.newValue
       updateRawAndSourceOfTruthCrystalData(newStateRaw)
       break;

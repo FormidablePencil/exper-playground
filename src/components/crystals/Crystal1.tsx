@@ -7,24 +7,25 @@ function Crystal1({
   feColorMatrixBackdropColor,
   feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy,
-  imageProps
+  imageProps, browserNotSupported
 }: {
   onClickHandler?: any
   edgesColor, middleColor,
   feColorMatrixBackdropColor,
   feColorMatrixStdDeviation,
   feColorMatrixDx, feColorMatrixDy
-  imageProps
+  imageProps, browserNotSupported?
 }) {
   return (
     <>
-      <svg viewBox="0 0 542 423"><defs>
+      <svg viewBox="0 0 500 493"><defs>
         <CrystalBackdrop
           feColorMatrixDx={feColorMatrixDx}
           feColorMatrixDy={feColorMatrixDy}
           feColorMatrixStdDeviation={feColorMatrixStdDeviation}
           feColorMatrixBackdropColor={feColorMatrixBackdropColor}
           nameId='filter-crystal1' />
+
         <mask
           id="mask-crystal1" x="97" y="76" width="369" height="252" maskUnits="userSpaceOnUse">
           <g className="">{/* //~ removed cls-9 */}
@@ -37,7 +38,7 @@ function Crystal1({
         </mask>
       </defs><title>Crystal 1</title><g className="cls-1"><g id="Shard_1" data-name="Shard 1">
 
-        <polygon filter="url(#filter-crystal1)" fill={edgesColor} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81"></polygon>
+        <polygon fill={edgesColor} filter={browserNotSupported ? '' : "url(#filter-crystal1)"} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81"></polygon>
         <g onClick={onClickHandler} className="cls-5-crystal1"><g className="cls-6">
           <polygon fill={middleColor} points="436.74 296.81 463.91 133.79 287.98 78.09 99.15 150.09 177.94 290.7 287.3 325.34 436.74 296.81" />
           <image

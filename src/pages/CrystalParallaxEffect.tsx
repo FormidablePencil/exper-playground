@@ -27,11 +27,10 @@ function CrystalParallaxEffect() {
       <CrystalDataContext.Provider value={{ crystalData }}>
         <div>
           <div style={{
-            background: "linear-gradient(144deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 39%, rgba(0,212,255,1) 100%)",
-            /* if linearGradient checked then disable bgImage, ect bg. */
-            // backgroundImage: `url(${crystalData.crystalParallaxBg.backgroundImage})`,
-            // backgroundSize: 'cover',
-            // backgroundPosition: `${crystalData.crystalParallaxBg.bgImgX}% ${crystalData.crystalParallaxBg.bgImgY}%`
+            background: crystalData.crystalParallaxBg.backgroundColor,
+            backgroundImage: `url(${crystalData.crystalParallaxBg.backgroundImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: `${crystalData.crystalParallaxBg.bgImgX}% ${crystalData.crystalParallaxBg.bgImgY}%`,
           }} className={classes.container}>
             <div className={classes.parallaxContainer}>
               <div />

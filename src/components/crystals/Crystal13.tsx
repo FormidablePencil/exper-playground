@@ -4,12 +4,12 @@ import CrystalBackdrop from './CrystalBackdrop'
 function Crystal13({
   onClickHandler,
   imageProps, edgesColor, middleColor,
-  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy
+  feColorMatrixBackdropColor, feColorMatrixStdDeviation, feColorMatrixDx, feColorMatrixDy, browserNotSupported
 }: {
   onClickHandler?: any
   imageProps, edgesColor, middleColor,
   feColorMatrixBackdropColor, feColorMatrixStdDeviation,
-  feColorMatrixDx, feColorMatrixDy
+  feColorMatrixDx, feColorMatrixDy, browserNotSupported?
 }) {
   return (
     <svg viewBox="0 0 440 300">
@@ -32,7 +32,7 @@ function Crystal13({
       <title>crystal 13</title>
       <g className="cls-1">
         <g id="Shard_4" data-name="Shard 4">
-          <polygon fill={edgesColor} filter="url(#filter-crystal13)"
+          <polygon fill={edgesColor} filter={browserNotSupported ? '' : "url(#filter-crystal13)"}
             points="407.63 139.72 330.92 78.16 98.44 237.89 340.74 260.46 407.63 139.72" />
           <g onClick={onClickHandler} className="cls-5-crystal13">
 

@@ -1,9 +1,10 @@
-import { Grid, makeStyles, Switch, TextField, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles, Switch, TextField, Typography } from '@material-ui/core';
 import React from 'react'
 import { crystalParallaxT } from '../../constants/crystalParallax';
-import ModifyCrystalInputFields from './modeCrystalInputFields/ModifyCrystalInputFields';
+import ModifyCrystalInputFields from './modCrystalInputFields/ModifyCrystalInputFields';
 import { selectedForModeColorsT } from '../../hooks/useParallaxProperties';
 import ToggleModMenu from './ToggleModMenu';
+import ModBackground from './modCrystalInputFields/ModBackground';
 
 function ParallaxGui({
   deleteCrystal,
@@ -39,45 +40,45 @@ function ParallaxGui({
 
   return (
     <div style={{ background: '#F8F8F8' }}>
-      <ToggleCrystalSelectionDistictionBtn
-        selectedForModeColors={selectedForModeColors}
-        setSelectedForModeColors={setSelectedForModeColors}
-        crystalSelectionDistinction={crystalSelectionDistinction}
-        setCrystalSelectionDistinction={setCrystalSelectionDistinction}
-      />
-      <ToggleModMenu
-        modMenuFixed={modMenuFixed}
-        setModMenuFixed={setModMenuFixed}
-      />
-      <TextField
-        onChange={(e) => dispatchCrystalData({ type: 'backgroundColor', payload: { newValue: e.target.value } })}
-        value={crystalData.crystalParallaxBg.backgroundColor}
-        label='background color' />
-      <TextField
-        onChange={(e) => dispatchCrystalData({ type: 'backgroundImage', payload: { newValue: e.target.value } })}
-        value={crystalData.crystalParallaxBg.backgroundImage}
-        label='background image' />
+      <Container>
+        <ToggleCrystalSelectionDistictionBtn
+          selectedForModeColors={selectedForModeColors}
+          setSelectedForModeColors={setSelectedForModeColors}
+          crystalSelectionDistinction={crystalSelectionDistinction}
+          setCrystalSelectionDistinction={setCrystalSelectionDistinction}
+        />
+        <ToggleModMenu
+          modMenuFixed={modMenuFixed}
+          setModMenuFixed={setModMenuFixed}
+        />
 
-      <Grid container className={classes.imageIndex}>
-        <Grid item className={classes.imageIndexText}>
-          <Typography variant='h4'>Component:</Typography>
+        <ModBackground
+          dispatchCrystalData={dispatchCrystalData} crystalData={crystalData} />
+
+        <Grid container className={classes.imageIndex}>
+          <Grid item className={classes.imageIndexText}>
+            <Typography variant='h4'>Component:</Typography>
+          </Grid>
+          <Grid item>
+            <input
+              onChange={onChangeCrystalIndex}
+              value={typeof crystalIndex !== 'number' ? crystalIndex : crystalIndex + 1}
+              className={classes.imageSelectedToMode} />
+          </Grid>
         </Grid>
-        <Grid item>
-          <input
-            onChange={onChangeCrystalIndex}
-            value={typeof crystalIndex !== 'number' ? crystalIndex : crystalIndex + 1}
-            className={classes.imageSelectedToMode} />
-        </Grid>
-      </Grid>
 
-      <ModifyCrystalInputFields
-        deleteCrystal={deleteCrystal}
-        addSpecificCrystal={addSpecificCrystal}
-        modMenuFixed={modMenuFixed}
-        selectedCrystalProps={crystalData.crystals[crystalIndex]}
-        dispatchCrystalData={dispatchCrystalData}
-      />
 
+
+        <ModifyCrystalInputFields
+          deleteCrystal={deleteCrystal}
+          addSpecificCrystal={addSpecificCrystal}
+          modMenuFixed={modMenuFixed}
+          selectedCrystalProps={crystalData.crystals[crystalIndex]}
+          dispatchCrystalData={dispatchCrystalData}
+        />
+
+        <div style={{ paddingBottom: 150 }} />
+      </Container>
     </div>
   )
 }
@@ -115,16 +116,16 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '1px solid #A3A3A3',
   },
   imageSelectedToMode: {
-    height: 30, width: 35, fontSize: 24,
+    height: 35, width: 35, fontSize: 24,
   },
   imageIndex: {
     background: 'white',
     position: 'fixed',
     right: 0,
-    top: 0,
+    top: 5,
     width: 270,
     borderRadius: '2em 0 0 2em',
-    scale: .8,
+    transform: 'scale(.8)',
   },
   imageIndexText: {
     marginLeft: 30,

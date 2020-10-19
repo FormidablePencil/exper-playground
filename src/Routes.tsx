@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
-import Navbar from './components/layouts/Navbar'
 import CrystalParallaxEffect from './pages/CrystalParallaxEffect'
 import Crystals from './pages/Crystals'
 import ImgBtSvg from './pages/ImgBtSvg'
@@ -20,7 +19,7 @@ function Routes() {
     <BrowserRouter>
       {pages.map(page =>
         <Route key={page.title} exact={page.path === '/' ? true : false} path={page.path}>
-          <Navbar />
+          {/* <Navbar /> */}
           {page.component}
         </Route>
       )}

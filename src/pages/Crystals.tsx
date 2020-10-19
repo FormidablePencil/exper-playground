@@ -5,7 +5,7 @@ import { mapOverTotalOfCrystals } from '../helpers/mapOverTotalOfCrystals'
 
 export const SvgSizingWrapper = ({ children, overrideStyles }: { children, overrideStyles?: any }) => {
   return (
-    <svg style={{ ...{ width: 300 }, ...overrideStyles, }} viewBox="0 10 240 100">
+    <svg style={{ ...{ width: 300 }, ...overrideStyles, }} viewBox="0 0 700 300">
       {children}
     </svg>
   )

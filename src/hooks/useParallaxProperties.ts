@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react'
 import crystalParallaxDefault, { crystalParallaxT, defaultCrystalData } from '../constants/crystalParallax'
+import { sliderValuesT } from '../components/crystals/modCrystalInputFields/components/RenderMediaQuerySliders'
 import cloneDeep from 'lodash/cloneDeep';
-import { sliderValuesT } from '../components/crystals/modeCrystalInputFields/components/RenderMediaQuerySliders'
 import useCompileCrystalData from './useCompileCrystalData';
 import useWindowSize from "./useWindowSize"
 import mainCrystalDataReducer from '../functions/mainCrystalDataReducer';
@@ -15,16 +15,7 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
   const [selectedForModeColors, setSelectedForModeColors] = useState<selectedForModeColorsT>({ middle: '#000000', edge: '#FFFFFF' })
   const [modMenuFixed, setModMenuFixed] = useState(true)
   const [rawCrystalData, setRawCrystalData] = useState<crystalParallaxT>(crystalParallaxDefault)
-  const [crystalData, setCrystalData] = useState<crystalParallaxT>({
-    crystalParallaxBg: {
-      backgroundColor: 'linear-gradient(to bottom, Transparente 0%,Transparente 50%,red 50%,red 100%)',
-      // backgroundImage: 'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v475-katie-101-abstractblackandwhitebg_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=86196a47d14e811c3149f69279f90c1e',
-      backgroundImage: '',
-      bgImgX: '',
-      bgImgY: '',
-    },
-    crystals: crystalParallaxDefault.crystals
-  })
+  const [crystalData, setCrystalData] = useState<crystalParallaxT>(crystalParallaxDefault)
 
   const prevCrystalMod = useRef(null) // so to not update state if everything is the same
   const windowWidth = useWindowSize().width
