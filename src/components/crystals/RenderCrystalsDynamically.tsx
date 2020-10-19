@@ -3,6 +3,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { makeStyles } from '@material-ui/core';
 import { SvgSizingWrapper } from '../../pages/Crystals';
 import SelectCrystal from './SelectCrystal';
+import { crystalParallaxT } from '../../constants/crystalParallax';
 
 
 const RenderCrystalsDynamically = ({
@@ -11,12 +12,22 @@ const RenderCrystalsDynamically = ({
   crystalIndex,
   crystalSelectionDistinction,
   crystalData
+}: {
+  setCrystalIndex,
+  selectedForModeColors,
+  crystalIndex,
+  crystalSelectionDistinction,
+  crystalData: crystalParallaxT
 }) => {
   const classes = useStyles();
   return (
     <>
       {/* change crystalParallaxDefault to controlled: crystalData */}
       {crystalData.crystals.map((props, index) => {
+        let rotateY = props.positionInParallaxCanvas.transform.rotateY
+          ? `rotateY(180deg)` : ''
+        let rotate = props.positionInParallaxCanvas.transform.rotate
+          && `rotate(${props.positionInParallaxCanvas.transform.rotate}deg)`
         let modedPropsSelectedForEdit
         if (crystalIndex === index && crystalSelectionDistinction) {
           modedPropsSelectedForEdit = cloneDeep(props.crystalProps)
@@ -33,7 +44,7 @@ const RenderCrystalsDynamically = ({
         `,
             ...props.positionInParallaxCanvas.xYPosition
           }}>
-            <SvgSizingWrapper>
+            <SvgSizingWrapper overrideStyles={{ transform: ` ${rotate} ${rotateY}` }}>
               <SelectCrystal
                 onClickHandler={() => setCrystalIndex(index)}
                 whatCrystal={props.shardIndex} crystalProps={modedPropsSelectedForEdit ?? props.crystalProps} />

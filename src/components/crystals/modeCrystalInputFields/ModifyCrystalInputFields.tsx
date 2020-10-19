@@ -4,7 +4,7 @@ import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalPara
 import ModPosition from './ModPosition';
 import ModShadow from './ModShadow';
 import ModColor from './ModColor';
-import ModSize from './ModSize';
+import ModTransform from './ModTransform';
 import ModAddChangeDelete from './ModAddChangeDelete';
 import cloneDeep from 'lodash/cloneDeep';
 import ModImage from './ModImage';
@@ -56,7 +56,7 @@ function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, selectedCrystal
             toggleAccodion={toggleAccodion}
           />
 
-          <ModSize
+          <ModTransform
             selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
             dispatchCrystalData={dispatchCrystalData}

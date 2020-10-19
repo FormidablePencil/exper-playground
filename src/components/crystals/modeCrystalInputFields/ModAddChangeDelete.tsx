@@ -3,7 +3,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
 import CrystalSelectionAccordion from './CrystalSelectionAccordion';
 
-function ModAddChangeDelete({ deleteCrystal, expandedAccordions, toggleAccodion, addSpecificCrystal, dispatchCrystalData }) {
+function ModAddChangeDelete({ deleteCrystal, expandedAccordions,
+  toggleAccodion, addSpecificCrystal, dispatchCrystalData }) {
   const classes = useStyles();
 
   return (
@@ -27,7 +28,8 @@ function ModAddChangeDelete({ deleteCrystal, expandedAccordions, toggleAccodion,
 
               <CrystalSelectionAccordion
                 accordionSummary='Crystal type'
-                onClickCrystalHandler={(e) => dispatchCrystalData({ action: { whatProperty: 'shardIndex' } }, e)} />
+                onClickCrystalHandler={(index) =>
+                  dispatchCrystalData({ type: 'shardIndex', payload: { newValue: index } })} />
 
               <CrystalSelectionAccordion
                 accordionSummary='Add Component'

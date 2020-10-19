@@ -49,6 +49,14 @@ function ParallaxGui({
         modMenuFixed={modMenuFixed}
         setModMenuFixed={setModMenuFixed}
       />
+      <TextField
+        onChange={(e) => dispatchCrystalData({ type: 'backgroundColor', payload: { newValue: e.target.value } })}
+        value={crystalData.crystalParallaxBg.backgroundColor}
+        label='background color' />
+      <TextField
+        onChange={(e) => dispatchCrystalData({ type: 'backgroundImage', payload: { newValue: e.target.value } })}
+        value={crystalData.crystalParallaxBg.backgroundImage}
+        label='background image' />
 
       <Grid container className={classes.imageIndex}>
         <Grid item className={classes.imageIndexText}>

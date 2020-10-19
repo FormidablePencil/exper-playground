@@ -4,7 +4,7 @@ import cloneDeep from 'lodash/cloneDeep';
 import { sliderValuesT } from '../components/crystals/modeCrystalInputFields/components/RenderMediaQuerySliders'
 import useCompileCrystalData from './useCompileCrystalData';
 import useWindowSize from "./useWindowSize"
-import mainCrystalDataReducer from '../functions/dispatchCrystalData';
+import mainCrystalDataReducer from '../functions/mainCrystalDataReducer';
 
 export interface selectedForModeColorsT { middle, edge }
 export interface dispatchCrystalDataT { type, payload?: { newValue?, moddedMediaQueryValues?: sliderValuesT[], mediaQueryWidth?} }
@@ -16,10 +16,12 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
   const [modMenuFixed, setModMenuFixed] = useState(true)
   const [rawCrystalData, setRawCrystalData] = useState<crystalParallaxT>(crystalParallaxDefault)
   const [crystalData, setCrystalData] = useState<crystalParallaxT>({
-    crystalBgImg: {
-      width: '100%',
-      transform: 'translateZ(0px) scale(1)',
-      height: '840px',
+    crystalParallaxBg: {
+      backgroundColor: 'linear-gradient(to bottom, Transparente 0%,Transparente 50%,red 50%,red 100%)',
+      // backgroundImage: 'https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v475-katie-101-abstractblackandwhitebg_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=86196a47d14e811c3149f69279f90c1e',
+      backgroundImage: '',
+      bgImgX: '',
+      bgImgY: '',
     },
     crystals: crystalParallaxDefault.crystals
   })
@@ -33,9 +35,9 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
 
 
 
-  const updateRawAndSourceOfTruthCrystalData = (newStateRaw: crystalParallaxT) => {
-    setRawCrystalData(newStateRaw)
-    setCrystalData(newStateRaw)
+  const updateRawAndSourceOfTruthCrystalData = (state: crystalParallaxT) => {
+    setRawCrystalData(state)
+    setCrystalData(state)
   }
 
 
@@ -52,10 +54,10 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
 
 
   const deleteCrystal = () => {
+    if (crystalData.crystals.length === 1) return
     let newState = cloneDeep(crystalData)
     newState.crystals.splice(crystalIndex, 1)
     updateRawAndSourceOfTruthCrystalData(newState)
-    setRawCrystalData(newState)
     setCrystalIndex(prev => prev - 1)
   }
 
@@ -64,7 +66,10 @@ const useParallaxProperties = (): useParallaxPropertiesT => {
   const dispatchCrystalData = ({ type, payload }: dispatchCrystalDataT) => {
     mainCrystalDataReducer(
       { type, payload },
-      { rawCrystalData, crystalData, setCrystalData, setRawCrystalData, crystalIndex }
+      {
+        rawCrystalData, setRawCrystalData, crystalData, setCrystalData,
+        crystalIndex, updateRawAndSourceOfTruthCrystalData
+      }
     )
   }
 

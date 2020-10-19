@@ -1,7 +1,7 @@
 import { crystalParallaxT } from "../constants/crystalParallax";
 
 const crystalDataReducer = ({ type, payload, crystalIndex, newState }: crystalDataReducerT) => {
-  const newValue = payload.newValue
+  const newValue = payload && payload.newValue
 
   switch (type) {
     case 'feColorMatrixDx':
@@ -19,6 +19,7 @@ const crystalDataReducer = ({ type, payload, crystalIndex, newState }: crystalDa
     case 'imageX':
     case 'imageY':
       let whatProp
+      if (type === 'image') whatProp = 'image'
       if (type === 'imageHeight') whatProp = 'height'
       if (type === 'imageWidth') whatProp = 'width'
       if (type === 'imageX') whatProp = 'x'
@@ -27,6 +28,10 @@ const crystalDataReducer = ({ type, payload, crystalIndex, newState }: crystalDa
       break;
     case 'scale':
     case 'translateZ':
+      newState.crystals[crystalIndex].positionInParallaxCanvas.transform[type] = newValue
+      break;
+    case 'rotate':
+    case 'rotateY':
       newState.crystals[crystalIndex].positionInParallaxCanvas.transform[type] = newValue
       break;
     case 'zIndex':

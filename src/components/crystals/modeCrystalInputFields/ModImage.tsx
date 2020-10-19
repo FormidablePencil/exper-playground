@@ -22,24 +22,29 @@ function ModImage({ dispatchCrystalData, expandedAccordions, toggleAccodion, sel
             <Grid item container>
               <TextField
                 className={classes.imageTextField}
-                onChange={(e) => dispatchCrystalData('image', e)}
+                onChange={(e) =>
+                  dispatchCrystalData({ type: 'image', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.crystalProps.imageProps.image}
                 label='image' />
             </Grid>
             <TextField
-              onChange={(e) => dispatchCrystalData('imageX', e)}
+              onChange={(e) =>
+                dispatchCrystalData({ type: 'imageX', payload: { newValue: e.target.value } })}
               value={selectedCrystalProps.crystalProps.imageProps.x}
               label='x' />
             <TextField
-              onChange={(e) => dispatchCrystalData('imageY', e)}
+              onChange={(e) =>
+                dispatchCrystalData({ type: 'imageY', payload: { newValue: e.target.value } })}
               value={selectedCrystalProps.crystalProps.imageProps.y}
               label='y' />
             <TextField
-              onChange={(e) => dispatchCrystalData('imageWidth', e)}
+              onChange={(e) =>
+                dispatchCrystalData({ type: 'imageWidth', payload: { newValue: e.target.value } })}
               value={selectedCrystalProps.crystalProps.imageProps.width}
               label='width' />
             <TextField
-              onChange={(e) => dispatchCrystalData('imageHeight', e)}
+              onChange={(e) =>
+                dispatchCrystalData({ type: 'imageHeight', payload: { newValue: e.target.value } })}
               value={selectedCrystalProps.crystalProps.imageProps.height}
               label='height' />
           </Grid>

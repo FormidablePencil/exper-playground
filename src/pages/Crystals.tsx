@@ -5,7 +5,7 @@ import { mapOverTotalOfCrystals } from '../helpers/mapOverTotalOfCrystals'
 
 export const SvgSizingWrapper = ({ children, overrideStyles }: { children, overrideStyles?: any }) => {
   return (
-    <svg style={{ ...{ width: 300 }, ...overrideStyles }} viewBox="0 0 200 500">
+    <svg style={{ ...{ width: 300 }, ...overrideStyles, }} viewBox="0 10 240 100">
       {children}
     </svg>
   )
@@ -22,7 +22,7 @@ function Crystals() {
   return (
     <div>
       {arrToMapOver.map((props, index) =>
-        <SvgSizingWrapper overrideStyles={{}} key={index}>
+        <SvgSizingWrapper overrideStyles={index === 0 ? { backgroundColor: 'orange' } : {}} key={index}>
           <SelectCrystal whatCrystal={index} crystalProps={crystalParallaxDefault.crystals[0].crystalProps} />
         </SvgSizingWrapper>
       )}

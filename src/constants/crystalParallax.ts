@@ -33,6 +33,8 @@ export interface mediaQueriesDataAppentionT {
     transform?: {
       scale?: string | number
       translateZ?: string | number
+      rotateY?: boolean
+      rotate?: string
     }
     xYPosition?: {
       top?: string | number
@@ -52,6 +54,8 @@ export interface crystalPositionOnParallaxCanvasT {
     transform: {
       scale: string | number
       translateZ: string | number
+      rotateY: boolean
+      rotate: string
     }
     xYPosition: {
       top: string | number
@@ -64,10 +68,11 @@ export interface crystalPositionOnParallaxCanvasT {
 }
 
 export interface crystalParallaxT {
-  crystalBgImg: {
-    width: string | number
-    height: string | number
-    transform: string | number
+  crystalParallaxBg: {
+    backgroundColor: string
+    backgroundImage: string
+    bgImgX: string | number
+    bgImgY: string | number
   }
   crystals: crystalPositionOnParallaxCanvasT[]
 }
@@ -103,7 +108,9 @@ export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
   positionInParallaxCanvas: {
     transform: {
       scale: 2,
-      translateZ: 1
+      translateZ: 1,
+      rotateY: false,
+      rotate: null,
     },/* 'translateZ(1px) scale(1)' */
     xYPosition: {
       top: '100px',
@@ -146,16 +153,17 @@ export const defaultCrystalData: crystalPositionOnParallaxCanvasT = {
 
 /* dummy data */
 const crystalParallaxDefault: crystalParallaxT = {
-  crystalBgImg: {
-    width: '100%',
-    transform: 'translateZ(0px) scale(1)',
-    height: '840px',
+  crystalParallaxBg: {
+    backgroundColor: '#151515',
+    backgroundImage: '',
+    bgImgX: '',
+    bgImgY: '',
   },
   crystals: [
     {
       mediaQueryWidth: null,
       key: 8,
-      shardIndex: 12,
+      shardIndex: 6,
       zIndex: 0,
       crystalProps: {
         imageProps: {
@@ -165,8 +173,10 @@ const crystalParallaxDefault: crystalParallaxT = {
           height: 225,
           width: 225,
         },
-        feColorMatrixDx: 2,
-        feColorMatrixDy: 4,
+        // feColorMatrixDx: 2,
+        // feColorMatrixDy: 4,
+        feColorMatrixDx: 5,
+        feColorMatrixDy: 5,
         feColorMatrixStdDeviation: 1,
         edgesColor: '#5C8AE4', middleColor: '#F62E34',
         feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
@@ -174,7 +184,9 @@ const crystalParallaxDefault: crystalParallaxT = {
       positionInParallaxCanvas: {
         transform: {
           scale: 2,
-          translateZ: 1
+          translateZ: 1,
+          rotateY: false,
+          rotate: null,
         },/* 'translateZ(1px) scale(1)' */
         xYPosition: {
           top: '100px',
@@ -202,8 +214,10 @@ const crystalParallaxDefault: crystalParallaxT = {
           positionInParallaxCanvas: {
             transform: {
               scale: 2,
-              translateZ: 1
-            },/* 'translateZ(1px) scale(1)' */
+              translateZ: 1,
+              rotateY: false,
+              rotate: null,
+            },
             xYPosition: {
               top: '100px',
               bottom: '',
@@ -243,102 +257,6 @@ const crystalParallaxDefault: crystalParallaxT = {
         },
       ]
     },
-    // {
-    //   key: 7,
-    //   shardIndex: 2,
-    //   zIndex: 0,
-    //   crystalProps: {
-    //     imageProps: {
-    //       image: require("../assets/pokeballSplash.png"),
-    //       x: 50,
-    //       y: 10,
-    //       height: 225,
-    //       width: 225,
-    //     },
-    //     feColorMatrixDx: 2,
-    //     feColorMatrixDy: 4,
-    //     feColorMatrixStdDeviation: 1,
-    //     edgesColor: '#5C8AE4', middleColor: '#F62E34',
-    //     feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
-    //   },
-    //   positionInParallaxCanvas: {
-    //     transform: {
-    //       scale: 2,
-    //       translateZ: 1
-    //     },/* 'translateZ(1px) scale(1)' */
-    //     xYPosition: {
-    //       top: '100px',
-    //       bottom: '',
-    //       left: '100px',
-    //       right: '',
-    //     }
-    //   },
-    //   mediaQueries: []
-    // },
-    // {
-    //   key: 6,
-    //   shardIndex: 4,
-    //   zIndex: 0,
-    //   crystalProps: {
-    //     imageProps: {
-    //       image: require("../assets/pokeballSplash.png"),
-    //       x: 50,
-    //       y: 10,
-    //       height: 225,
-    //       width: 225,
-    //     },
-    //     feColorMatrixDx: 2,
-    //     feColorMatrixDy: 4,
-    //     feColorMatrixStdDeviation: 1,
-    //     edgesColor: '#5C8AE4', middleColor: '#F62E34',
-    //     feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
-    //   },
-    //   positionInParallaxCanvas: {
-    //     transform: {
-    //       scale: 2,
-    //       translateZ: 1
-    //     },/* 'translateZ(1px) scale(1)' */
-    //     xYPosition: {
-    //       top: '100px',
-    //       bottom: '',
-    //       left: '100px',
-    //       right: '',
-    //     }
-    //   },
-    //   mediaQueries: []
-    // },
-    // {
-    //   key: 5,
-    //   shardIndex: 1,
-    //   zIndex: 0,
-    //   crystalProps: {
-    //     imageProps: {
-    //       image: require("../assets/pokeballSplash.png"),
-    //       x: 50,
-    //       y: 10,
-    //       height: 225,
-    //       width: 225,
-    //     },
-    //     feColorMatrixDx: 2,
-    //     feColorMatrixDy: 12,
-    //     feColorMatrixStdDeviation: 2,
-    //     edgesColor: '#5C8AE4', middleColor: '#F62E34',
-    //     feColorMatrixBackdropColor: feColorMatrixCrystalBackdropColor,
-    //   },
-    //   positionInParallaxCanvas: {
-    //     transform: {
-    //       scale: .75,
-    //       translateZ: 3
-    //     },/* 'translateZ(1px) scale(1)' */
-    //     xYPosition: {
-    //       top: '100px',
-    //       bottom: '',
-    //       left: '',
-    //       right: '800px',
-    //     }
-    //   },
-    //   mediaQueries: []
-    // },
   ]
 }
 
@@ -346,8 +264,6 @@ const crystalParallaxDefault: crystalParallaxT = {
 export default crystalParallaxDefault
 
   //% left to do:
-  //~ read the crystalData for mediaQuery indead for picking reducers
-  // ~ gui for media queries
-  // if no crystals, then show btn to add one (default one)
   // canvas height, background image (parallaxing);
   // check to see if all works
+  // port it into projects: create branches, watch vid on npm installing into projects, execute

@@ -21,7 +21,7 @@ function CrystalSelectionAccordion({ onClickCrystalHandler, accordionSummary }) 
                 onClick={() => onClickCrystalHandler(index)}
                 className={classes.crystalBtn}
                 key={index}>Crystal {index + 1}
-                <div style={{ height: 75, width: 75 }}>
+                <div style={{ height: 105, width: 75 }}>
                   <SelectCrystal whatCrystal={index} />
                 </div>
               </Button>

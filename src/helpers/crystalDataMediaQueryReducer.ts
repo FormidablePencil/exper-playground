@@ -1,8 +1,8 @@
 import { crystalDataReducerT } from "./crystalDataReducer";
 
 const crystalDataMediaQueryReducer = ({ type, payload, crystalIndex, crystalData, newState }: crystalDataReducerT) => {
+  const newValue = payload && payload.newValue
 
-  const newValue = payload.newValue
   newState.crystals[crystalIndex].mediaQueries.map(data => {
     if (data.mediaQueryWidth === crystalData.crystals[crystalIndex].mediaQueryWidth) {
       switch (type) {
@@ -21,6 +21,7 @@ const crystalDataMediaQueryReducer = ({ type, payload, crystalIndex, crystalData
         case 'imageX':
         case 'imageY':
           let whatProp
+          if (type === 'image') whatProp = 'image'
           if (type === 'imageHeight') whatProp = 'height'
           if (type === 'imageWidth') whatProp = 'width'
           if (type === 'imageX') whatProp = 'x'
@@ -30,6 +31,12 @@ const crystalDataMediaQueryReducer = ({ type, payload, crystalIndex, crystalData
 
         case 'scale':
         case 'translateZ':
+          data.positionInParallaxCanvas.transform[type] = newValue
+          break;
+
+        case 'rotate':
+        case 'rotateY':
+          data.positionInParallaxCanvas.transform[type] = newValue
           data.positionInParallaxCanvas.transform[type] = newValue
           break;
 

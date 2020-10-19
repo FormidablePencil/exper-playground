@@ -22,31 +22,27 @@ function ModPosition({ dispatchCrystalData, expandedAccordions, toggleAccodion, 
           {selectedCrystalProps.positionInParallaxCanvas.xYPosition &&
             <>
               <TextField
-                onChange={(e) => dispatchCrystalData({ action: { whatProperty: 'top' } }, e)}
+                onChange={(e) => dispatchCrystalData({ type: 'top', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.top}
                 label='top' />
               <TextField
-                onChange={(e) => dispatchCrystalData('bottom', e)}
+                onChange={(e) => dispatchCrystalData({ type: 'bottom', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.bottom}
                 label='bottom' />
               <TextField
-                onChange={(e) => dispatchCrystalData('left', e)}
+                onChange={(e) => dispatchCrystalData({ type: 'left', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.left}
                 label='left' />
               <TextField
-                onChange={(e) => dispatchCrystalData('right', e)}
+                onChange={(e) => dispatchCrystalData({ type: 'right', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.right}
                 label='right' />
               <TextField
-                onChange={(e) => dispatchCrystalData('zIndex', e)}
+                onChange={(e) => dispatchCrystalData({ type: 'zIndex', payload: { newValue: e.target.value } })}
                 value={selectedCrystalProps.zIndex}
                 label='zIndex' />
             </>
           }
-          <TextField
-            onChange={(e) => dispatchCrystalData('translateZ', e)}
-            value={selectedCrystalProps.positionInParallaxCanvas.transform.translateZ}
-            label='depth (translateZ)' />
         </AccordionDetails>
       </Accordion>
     </Grid>

@@ -1,12 +1,8 @@
 import { makeStyles } from '@material-ui/core';
 import React, { createContext } from 'react'
 import ParallaxGui from '../components/crystals/ParallaxGui';
-import SelectCrystal from '../components/crystals/SelectCrystal';
 import useParallaxProperties, { useParallaxPropertiesT } from '../hooks/useParallaxProperties';
-import { SvgSizingWrapper } from './Crystals';
-import cloneDeep from 'lodash/cloneDeep';
 import RenderCrystalsDynamically from '../components/crystals/RenderCrystalsDynamically';
-import { crystalParallaxT } from '../constants/crystalParallax';
 
 export const WindowWidthContext = createContext({ windowWidth: 0 })
 export const CrystalDataContext = createContext<any>({ crystalData: {} })
@@ -25,15 +21,20 @@ function CrystalParallaxEffect() {
     windowWidth,
   }: useParallaxPropertiesT = useParallaxProperties()
 
-  const parallaxCanvasHeight = '100vh'
 
   return (
     <WindowWidthContext.Provider value={{ windowWidth }}>
       <CrystalDataContext.Provider value={{ crystalData }}>
         <div>
-          <div className={classes.container}>
+          <div style={{
+            background: "linear-gradient(144deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 39%, rgba(0,212,255,1) 100%)",
+            /* if linearGradient checked then disable bgImage, ect bg. */
+            // backgroundImage: `url(${crystalData.crystalParallaxBg.backgroundImage})`,
+            // backgroundSize: 'cover',
+            // backgroundPosition: `${crystalData.crystalParallaxBg.bgImgX}% ${crystalData.crystalParallaxBg.bgImgY}%`
+          }} className={classes.container}>
             <div className={classes.parallaxContainer}>
-              <div style={{ height: parallaxCanvasHeight }} />
+              <div />
               <RenderCrystalsDynamically
                 selectedForModeColors={selectedForModeColors}
                 crystalIndex={crystalIndex}
@@ -60,7 +61,6 @@ function CrystalParallaxEffect() {
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    backgroundColor: 'aquamarine',
     height: '100vh',
     width: '100%',
   },

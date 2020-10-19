@@ -16,7 +16,6 @@ function Crystal1({
   feColorMatrixDx, feColorMatrixDy
   imageProps
 }) {
-  
   return (
     <>
       <svg viewBox="0 0 542 423"><defs>

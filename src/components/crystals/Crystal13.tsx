@@ -12,13 +12,13 @@ function Crystal13({
   feColorMatrixDx, feColorMatrixDy
 }) {
   return (
-    <svg viewBox="0 0 486 358">
+    <svg viewBox="0 0 440 300">
       <defs>
         <CrystalBackdrop
-        feColorMatrixDx={feColorMatrixDx}
-        feColorMatrixDy={feColorMatrixDy}
-        feColorMatrixStdDeviation={feColorMatrixStdDeviation}
-         feColorMatrixBackdropColor={feColorMatrixBackdropColor}
+          feColorMatrixDx={feColorMatrixDx}
+          feColorMatrixDy={feColorMatrixDy}
+          feColorMatrixStdDeviation={feColorMatrixStdDeviation}
+          feColorMatrixBackdropColor={feColorMatrixBackdropColor}
           nameId='filter-crystal13' />
         <mask id="mask-crystal13" x="96" y="76" width="314" height="187" maskUnits="userSpaceOnUse">
           <g className="cls-9">
@@ -33,7 +33,7 @@ function Crystal13({
       <g className="cls-1">
         <g id="Shard_4" data-name="Shard 4">
           <polygon fill={edgesColor} filter="url(#filter-crystal13)"
-           points="407.63 139.72 330.92 78.16 98.44 237.89 340.74 260.46 407.63 139.72" />
+            points="407.63 139.72 330.92 78.16 98.44 237.89 340.74 260.46 407.63 139.72" />
           <g onClick={onClickHandler} className="cls-5-crystal13">
 
             <g className="cls-6">
