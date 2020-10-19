@@ -3,8 +3,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
 import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalParallax';
 
-function ModPosition({ onChangeCrystalData, expandedAccordions, toggleAccodion, crystalProps
-}: { onChangeCrystalData, expandedAccordions, toggleAccodion, crystalProps: crystalPositionOnParallaxCanvasT }) {
+function ModPosition({ dispatchCrystalData, expandedAccordions, toggleAccodion, selectedCrystalProps
+}: { dispatchCrystalData, expandedAccordions, toggleAccodion, selectedCrystalProps: crystalPositionOnParallaxCanvasT }) {
   return (
     <Grid item container>
       <Accordion
@@ -19,31 +19,34 @@ function ModPosition({ onChangeCrystalData, expandedAccordions, toggleAccodion, 
           </Grid>
         </AccordionSummary>
         <AccordionDetails>
-          {crystalProps.positionInParallaxCanvas.xYPosition &&
+          {selectedCrystalProps.positionInParallaxCanvas.xYPosition &&
             <>
               <TextField
-                onChange={(e) => onChangeCrystalData({ action: { whatProperty: 'top' } }, e)}
-                value={crystalProps.positionInParallaxCanvas.xYPosition.top}
+                onChange={(e) => dispatchCrystalData({ action: { whatProperty: 'top' } }, e)}
+                value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.top}
                 label='top' />
               <TextField
-                onChange={(e) => onChangeCrystalData('bottom', e)}
-                value={crystalProps.positionInParallaxCanvas.xYPosition.bottom}
+                onChange={(e) => dispatchCrystalData('bottom', e)}
+                value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.bottom}
                 label='bottom' />
               <TextField
-                onChange={(e) => onChangeCrystalData('left', e)}
-                value={crystalProps.positionInParallaxCanvas.xYPosition.left}
+                onChange={(e) => dispatchCrystalData('left', e)}
+                value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.left}
                 label='left' />
               <TextField
-                onChange={(e) => onChangeCrystalData('right', e)}
-                value={crystalProps.positionInParallaxCanvas.xYPosition.right}
+                onChange={(e) => dispatchCrystalData('right', e)}
+                value={selectedCrystalProps.positionInParallaxCanvas.xYPosition.right}
                 label='right' />
               <TextField
-                onChange={(e) => onChangeCrystalData('zIndex', e)}
-                value={crystalProps.zIndex}
+                onChange={(e) => dispatchCrystalData('zIndex', e)}
+                value={selectedCrystalProps.zIndex}
                 label='zIndex' />
             </>
           }
-          <TextField onChange={(e) => onChangeCrystalData('translateZ', e)} value={crystalProps.positionInParallaxCanvas.transform.translateZ} label='depth (translateZ)' />
+          <TextField
+            onChange={(e) => dispatchCrystalData('translateZ', e)}
+            value={selectedCrystalProps.positionInParallaxCanvas.transform.translateZ}
+            label='depth (translateZ)' />
         </AccordionDetails>
       </Accordion>
     </Grid>

@@ -15,7 +15,7 @@ function CrystalParallaxEffect() {
   const classes = useStyles();
 
   const {
-    onChangeCrystalData, crystalData,
+    dispatchCrystalData, crystalData,
     crystalIndex, setCrystalIndex,
     crystalSelectionDistinction, setCrystalSelectionDistinction,
     selectedForModeColors, setSelectedForModeColors,
@@ -50,7 +50,7 @@ function CrystalParallaxEffect() {
             selectedForModeColors={selectedForModeColors} setSelectedForModeColors={setSelectedForModeColors}
             crystalSelectionDistinction={crystalSelectionDistinction} setCrystalSelectionDistinction={setCrystalSelectionDistinction}
             crystalIndex={crystalIndex} setCrystalIndex={setCrystalIndex}
-            crystalData={crystalData} onChangeCrystalData={onChangeCrystalData}
+            crystalData={crystalData} dispatchCrystalData={dispatchCrystalData}
           />
         </div>
       </CrystalDataContext.Provider>

@@ -1,19 +1,18 @@
 import { crystalDataReducerT } from "./crystalDataReducer";
 
-const crystalDataMediaQueryReducer = ({ action, e, crystalIndex, newState }: crystalDataReducerT) => {
-  const { mediaQueryWidth, whatProperty } = action
-  const targetValue = e.target.value
+const crystalDataMediaQueryReducer = ({ type, payload, crystalIndex, crystalData, newState }: crystalDataReducerT) => {
 
+  const newValue = payload.newValue
   newState.crystals[crystalIndex].mediaQueries.map(data => {
-    if (data.mediaQueryWidth === mediaQueryWidth) {
-      switch (action.whatProperty) {
+    if (data.mediaQueryWidth === crystalData.crystals[crystalIndex].mediaQueryWidth) {
+      switch (type) {
         case 'feColorMatrixDx':
         case 'feColorMatrixDy':
         case 'feColorMatrixStdDeviation':
         case 'edgesColor':
         case 'middleColor':
         case 'feColorMatrixBackdropColor':
-          data.crystalProps[whatProperty] = targetValue
+          data.crystalProps[type] = newValue
           break;
 
         case 'image':
@@ -22,28 +21,28 @@ const crystalDataMediaQueryReducer = ({ action, e, crystalIndex, newState }: cry
         case 'imageX':
         case 'imageY':
           let whatProp
-          if (whatProperty === 'imageHeight') whatProp = 'height'
-          if (whatProperty === 'imageWidth') whatProp = 'width'
-          if (whatProperty === 'imageX') whatProp = 'x'
-          if (whatProperty === 'imageY') whatProp = 'y'
-          data.crystalProps.imageProps[whatProp] = targetValue
+          if (type === 'imageHeight') whatProp = 'height'
+          if (type === 'imageWidth') whatProp = 'width'
+          if (type === 'imageX') whatProp = 'x'
+          if (type === 'imageY') whatProp = 'y'
+          data.crystalProps.imageProps[whatProp] = newValue
           break;
 
         case 'scale':
         case 'translateZ':
-          data.positionInParallaxCanvas.transform[whatProperty] = targetValue
+          data.positionInParallaxCanvas.transform[type] = newValue
           break;
 
         case 'zIndex':
         case 'shardIndex':
-          data[crystalIndex] = targetValue
+          data[crystalIndex] = newValue
           break;
 
         case 'top':
         case 'bottom':
         case 'left':
         case 'right':
-          data.positionInParallaxCanvas.xYPosition[whatProperty] = targetValue
+          data.positionInParallaxCanvas.xYPosition[type] = newValue
           break;
 
         default:

@@ -5,8 +5,8 @@ import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalPara
 import { WindowWidthContext } from '../../../pages/CrystalParallaxEffect';
 import RenderMediaQuerySliders from './components/RenderMediaQuerySliders';
 
-function ModMediaQueries({ onChangeCrystalData, crystalProps, expandedAccordions, toggleAccodion }:
-  { onChangeCrystalData, crystalProps: crystalPositionOnParallaxCanvasT, expandedAccordions, toggleAccodion }) {
+function ModMediaQueries({ dispatchCrystalData, selectedCrystalProps, expandedAccordions, toggleAccodion }:
+  { dispatchCrystalData, selectedCrystalProps: crystalPositionOnParallaxCanvasT, expandedAccordions, toggleAccodion }) {
 
   return (
     <Grid item>
@@ -24,8 +24,8 @@ function ModMediaQueries({ onChangeCrystalData, crystalProps, expandedAccordions
           <Grid container>
 
             <RenderMediaQuerySliders
-              onChangeCrystalData={onChangeCrystalData}
-              crystalProps={crystalProps} />
+              dispatchCrystalData={dispatchCrystalData}
+              selectedCrystalProps={selectedCrystalProps} />
 
           </Grid>
         </AccordionDetails>

@@ -3,8 +3,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
 import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalParallax';
 
-function ModImage({ onChangeCrystalData, expandedAccordions, toggleAccodion, crystalProps }:
-  { onChangeCrystalData, expandedAccordions, toggleAccodion, crystalProps: crystalPositionOnParallaxCanvasT }) {
+function ModImage({ dispatchCrystalData, expandedAccordions, toggleAccodion, selectedCrystalProps }:
+  { dispatchCrystalData, expandedAccordions, toggleAccodion, selectedCrystalProps: crystalPositionOnParallaxCanvasT }) {
   const classes = useStyles();
   return (
     <Grid item>
@@ -22,25 +22,25 @@ function ModImage({ onChangeCrystalData, expandedAccordions, toggleAccodion, cry
             <Grid item container>
               <TextField
                 className={classes.imageTextField}
-                onChange={(e) => onChangeCrystalData('image', e)}
-                value={crystalProps.crystalProps.imageProps.image}
+                onChange={(e) => dispatchCrystalData('image', e)}
+                value={selectedCrystalProps.crystalProps.imageProps.image}
                 label='image' />
             </Grid>
             <TextField
-              onChange={(e) => onChangeCrystalData('imageX', e)}
-              value={crystalProps.crystalProps.imageProps.x}
+              onChange={(e) => dispatchCrystalData('imageX', e)}
+              value={selectedCrystalProps.crystalProps.imageProps.x}
               label='x' />
             <TextField
-              onChange={(e) => onChangeCrystalData('imageY', e)}
-              value={crystalProps.crystalProps.imageProps.y}
+              onChange={(e) => dispatchCrystalData('imageY', e)}
+              value={selectedCrystalProps.crystalProps.imageProps.y}
               label='y' />
             <TextField
-              onChange={(e) => onChangeCrystalData('imageWidth', e)}
-              value={crystalProps.crystalProps.imageProps.width}
+              onChange={(e) => dispatchCrystalData('imageWidth', e)}
+              value={selectedCrystalProps.crystalProps.imageProps.width}
               label='width' />
             <TextField
-              onChange={(e) => onChangeCrystalData('imageHeight', e)}
-              value={crystalProps.crystalProps.imageProps.height}
+              onChange={(e) => dispatchCrystalData('imageHeight', e)}
+              value={selectedCrystalProps.crystalProps.imageProps.height}
               label='height' />
           </Grid>
         </AccordionDetails>

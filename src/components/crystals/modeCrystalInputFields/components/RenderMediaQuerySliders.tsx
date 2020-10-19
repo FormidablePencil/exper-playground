@@ -1,34 +1,38 @@
 import { Button, Grid, Slider, Typography, withStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
+import { dispatchCrystalDataT } from '../../../../hooks/useParallaxProperties';
 
+export interface sliderValuesT { initial, mod }
 
-const RenderMediaQuerySliders = ({ onChangeCrystalData, crystalProps }:
-  { onChangeCrystalData, crystalProps }) => {
+const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
+  { dispatchCrystalData: (item: dispatchCrystalDataT) => {}, selectedCrystalProps }) => {
 
-  interface sliderValues { initial, mod }
-  const [sliderValues, setSliderValues] = useState<sliderValues[]>([{ initial: 0, mod: 0 }])
+  const [sliderValues, setSliderValues] = useState<sliderValuesT[]>([{ initial: 0, mod: 0 }])
   const [readyToSave, setReadyToSave] = useState(false)
 
   const onChangeSlider = ({ newValue, key }) => {
-    // console.log(newValue, key)
     setSliderValues(prev => prev.map(prevItem =>
       prevItem.initial === key ? { mod: newValue, initial: prevItem.initial } : prevItem))
   }
 
+  
   const saveSliderValue = () => {
     const moddedMediaQueryValues = sliderValues.filter(item => item.initial !== item.mod && item.mod)
-    onChangeCrystalData({ action: { type: 'update mediaQuery values', payload: moddedMediaQueryValues } })
+    dispatchCrystalData({ type: 'update mediaQuery values', payload: { moddedMediaQueryValues } })
     setReadyToSave(false)
   }
 
+
   const onClickCreateNewMediaQuery = (e) => {
-    onChangeCrystalData({ action: { type: 'addMediaQuery' } })
+    dispatchCrystalData({ type: 'addMediaQuery', payload: null })
     setReadyToSave(false) /* save current slider values and create new mediaQuery */
   }
+  
 
   const onClickDeleteMediaQueryHandler = (mediaQueryWidth) => {
-    onChangeCrystalData({ action: { type: 'removeMediaQuery', mediaQueryWidth } })
+    dispatchCrystalData({ type: 'removeMediaQuery', payload: { mediaQueryWidth } })
   }
+
 
   const getSliderValue = ({ mediaQueryWidth }) => {
     return sliderValues.filter(item =>
@@ -37,12 +41,13 @@ const RenderMediaQuerySliders = ({ onChangeCrystalData, crystalProps }:
         item.initial === mediaQueryWidth)[0].mod : null
   }
 
+
   useEffect(() => {
-    let sre = () => crystalProps.mediaQueries.map(mediaQuery => {
+    let sre = () => selectedCrystalProps.mediaQueries.map(mediaQuery => {
       return { initial: mediaQuery.mediaQueryWidth, mod: mediaQuery.mediaQueryWidth }
     })
     setSliderValues(sre())
-  }, [crystalProps])
+  }, [selectedCrystalProps])
 
 
   // if sliderValues changed then show save btn
@@ -53,18 +58,18 @@ const RenderMediaQuerySliders = ({ onChangeCrystalData, crystalProps }:
       return value
     })
   }, [sliderValues])
-
+  
   return (
     <>
       <Typography
         variant='h5'
-        color={crystalProps.mediaQueryWidth === null ? 'secondary' : 'primary'}>
+        color={selectedCrystalProps.mediaQueryWidth === null ? 'secondary' : 'primary'}>
         Original
         </Typography>
 
-      {crystalProps.mediaQueries.map(mediaQuery => {
+      {selectedCrystalProps.mediaQueries.map(mediaQuery => {
         let currentMQApplied = false
-        if (mediaQuery.mediaQueryWidth === crystalProps.mediaQueryWidth)
+        if (mediaQuery.mediaQueryWidth === selectedCrystalProps.mediaQueryWidth)
           currentMQApplied = true
         return (
           <Grid container direction='row' wrap='nowrap'>

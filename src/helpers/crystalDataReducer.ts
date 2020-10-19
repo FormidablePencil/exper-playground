@@ -1,10 +1,9 @@
 import { crystalParallaxT } from "../constants/crystalParallax";
 
-const crystalDataReducer = ({ action, e, crystalIndex, newState }: crystalDataReducerT) => {
-  const targetValue = e.target ? e.target.value : e
-  const { whatProperty } = action
+const crystalDataReducer = ({ type, payload, crystalIndex, newState }: crystalDataReducerT) => {
+  const newValue = payload.newValue
 
-  switch (whatProperty) {
+  switch (type) {
     case 'feColorMatrixDx':
     case 'feColorMatrixDy':
     case 'feColorMatrixStdDeviation':
@@ -12,7 +11,7 @@ const crystalDataReducer = ({ action, e, crystalIndex, newState }: crystalDataRe
     case 'middleColor':
     case 'feColorMatrixBackdropColor':
       newState.crystals[crystalIndex]
-        .crystalProps[whatProperty] = targetValue
+        .crystalProps[type] = newValue
       break;
     case 'image':
     case 'imageHeight':
@@ -20,26 +19,26 @@ const crystalDataReducer = ({ action, e, crystalIndex, newState }: crystalDataRe
     case 'imageX':
     case 'imageY':
       let whatProp
-      if (whatProperty === 'imageHeight') whatProp = 'height'
-      if (whatProperty === 'imageWidth') whatProp = 'width'
-      if (whatProperty === 'imageX') whatProp = 'x'
-      if (whatProperty === 'imageY') whatProp = 'y'
-      newState.crystals[crystalIndex].crystalProps.imageProps[whatProp] = targetValue
+      if (type === 'imageHeight') whatProp = 'height'
+      if (type === 'imageWidth') whatProp = 'width'
+      if (type === 'imageX') whatProp = 'x'
+      if (type === 'imageY') whatProp = 'y'
+      newState.crystals[crystalIndex].crystalProps.imageProps[whatProp] = newValue
       break;
     case 'scale':
     case 'translateZ':
-      newState.crystals[crystalIndex].positionInParallaxCanvas.transform[whatProperty] = targetValue
+      newState.crystals[crystalIndex].positionInParallaxCanvas.transform[type] = newValue
       break;
     case 'zIndex':
     case 'shardIndex':
-      newState.crystals[crystalIndex][whatProperty] = targetValue
+      newState.crystals[crystalIndex][type] = newValue
       break;
     case 'top':
     case 'bottom':
     case 'left':
     case 'right':
       newState.crystals[crystalIndex]
-        .positionInParallaxCanvas.xYPosition[action.whatProperty] = targetValue
+        .positionInParallaxCanvas.xYPosition[type] = newValue
       break;
     default:
       break;
@@ -51,11 +50,8 @@ export default crystalDataReducer
 
 
 export interface crystalDataReducerT {
-  action: {
-    whatProperty,
-    mediaQueryWidth
-  }
-  e: { target: { value } }
+  type, payload
   crystalIndex: number
   newState: crystalParallaxT
+  crystalData?
 }

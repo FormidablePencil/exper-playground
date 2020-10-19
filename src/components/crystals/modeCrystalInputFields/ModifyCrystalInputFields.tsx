@@ -10,8 +10,8 @@ import cloneDeep from 'lodash/cloneDeep';
 import ModImage from './ModImage';
 import ModMediaQueries from './ModMediaQueries';
 
-function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalProps, onChangeCrystalData, addSpecificCrystal }:
-  { deleteCrystal, modMenuFixed, crystalProps: crystalPositionOnParallaxCanvasT, onChangeCrystalData, addSpecificCrystal }) {
+function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, selectedCrystalProps, dispatchCrystalData, addSpecificCrystal }:
+  { deleteCrystal, modMenuFixed, selectedCrystalProps: crystalPositionOnParallaxCanvasT, dispatchCrystalData, addSpecificCrystal }) {
   const classes = useStyles();
   const [expandedAccordions, setExpandedAccordions] = useState({
     shadow: false,
@@ -31,42 +31,42 @@ function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalProps, o
     })
   }
 
-  if (crystalProps)
+  if (selectedCrystalProps)
     return (
       <Container className={`${classes.modeMenu} ${modMenuFixed && classes.modeMenuFixed}`}>
         <Grid container spacing={1} direction='column'>
 
           <ModShadow
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
           />
           <ModColor
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
           />
 
           <ModPosition
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
           />
 
           <ModSize
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
           />
 
           <ModImage
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
             />
 
@@ -74,14 +74,14 @@ function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, crystalProps, o
             deleteCrystal={deleteCrystal}
             addSpecificCrystal={addSpecificCrystal}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
             />
 
           <ModMediaQueries
-            crystalProps={crystalProps}
+            selectedCrystalProps={selectedCrystalProps}
             expandedAccordions={expandedAccordions}
-            onChangeCrystalData={onChangeCrystalData}
+            dispatchCrystalData={dispatchCrystalData}
             toggleAccodion={toggleAccodion}
           />
 
