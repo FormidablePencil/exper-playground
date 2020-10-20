@@ -1,3 +1,4 @@
+import { Container, Grid, Typography } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import SelectCrystal from '../components/crystals/SelectCrystal'
 import crystalParallaxDefault from '../constants/crystalParallax'
@@ -20,13 +21,18 @@ function Crystals() {
   }, [])
 
   return (
-    <div>
-      {arrToMapOver.map((props, index) =>
-        <SvgSizingWrapper overrideStyles={index === 0 ? { backgroundColor: 'orange' } : {}} key={index}>
-          <SelectCrystal whatCrystal={index} crystalProps={crystalParallaxDefault.crystals[0].crystalProps} />
-        </SvgSizingWrapper>
-      )}
-    </div>
+    <Container>
+      <Grid container direction='row'>
+        {arrToMapOver.map((props, index) =>
+          <div>
+            <Typography style={{ marginTop: 10 }} variant='body1'>Crystal {index + 1}</Typography>
+            <SvgSizingWrapper key={index}>
+              <SelectCrystal whatCrystal={index} crystalProps={crystalParallaxDefault.crystals[0].crystalProps} />
+            </SvgSizingWrapper>
+          </div>
+        )}
+      </Grid>
+    </Container>
   )
 }
 
