@@ -1,10 +1,10 @@
 import { Container, Grid, makeStyles, Switch, TextField, Typography } from '@material-ui/core';
 import React from 'react'
-import { crystalParallaxT } from '../../constants/crystalParallax';
-import ModifyCrystalInputFields from './modCrystalInputFields/ModifyCrystalInputFields';
-import { selectedForModeColorsT } from '../../hooks/useParallaxProperties';
-import ToggleModMenu from './ToggleModMenu';
+import { crystalParallaxT } from '../constants/crystalParallax';
+import { selectedForModeColorsT } from '../hooks/useParallaxProperties';
+import ToggleModMenu from './crystals/ToggleModMenu';
 import ModBackground from './modCrystalInputFields/ModBackground';
+import ModifyCrystalInputFields from './ModifyCrystalInputFields';
 
 function ParallaxGui({
   deleteCrystal,

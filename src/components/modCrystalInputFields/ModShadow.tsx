@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Grid, TextField, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
-import { dispatchCrystalDataT } from '../../../hooks/useParallaxProperties';
+import { dispatchCrystalDataT } from '../../hooks/useParallaxProperties';
 
 function ModShadow({ dispatchCrystalData, expandedAccordions, toggleAccodion, selectedCrystalProps }: {
   dispatchCrystalData?: (item: dispatchCrystalDataT) => {}, expandedAccordions, toggleAccodion, selectedCrystalProps

@@ -1,10 +1,10 @@
 import { crystalParallaxT } from "../constants/crystalParallax";
 import { dispatchCrystalDataT } from "../hooks/useParallaxProperties";
 import cloneDeep from 'lodash/cloneDeep';
-import uniqueMediaQuery from "../helpers/uniqueMediaQuery";
-import crystalDataMediaQueryReducer from "../helpers/crystalDataMediaQueryReducer";
-import { compileMediaQueryDataToCrystalData } from "./pullDataFromMediaQueryRelativeToWindowWidth";
-import crystalDataReducer from "../helpers/crystalDataReducer";
+import createUniqueMediaQuery from "../helpers/createUniqueMediaQuery";
+import crystalDataMediaQueryReducer from "./crystalDataMediaQueryReducer";
+import { compileMediaQueryDataToCrystalData } from "../functions/pullDataFromMediaQueryRelativeToWindowWidth";
+import crystalDataReducer from "./crystalDataReducer";
 
 
 const mainCrystalDataReducer = (
@@ -30,7 +30,7 @@ const mainCrystalDataReducer = (
 
     case 'addMediaQuery':
       newStateRaw.crystals[crystalIndex].mediaQueries.push({
-        mediaQueryWidth: uniqueMediaQuery({ crystalData: rawCrystalData, crystalIndex })/* must be different than any other mediaQueryWidth */
+        mediaQueryWidth: createUniqueMediaQuery({ crystalData: rawCrystalData, crystalIndex })/* must be different than any other mediaQueryWidth */
       })
       updateRawAndSourceOfTruthCrystalData(newStateRaw)
       break;

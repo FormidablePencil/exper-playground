@@ -3,7 +3,7 @@ function getRandomInt(max) {
 }
 
 
-const uniqueMediaQuery = ({ crystalData, crystalIndex }) => {
+const createUniqueMediaQuery = ({ crystalData, crystalIndex }) => {
 
   const allMediaQueryWidths = crystalData.crystals[crystalIndex]
     .mediaQueries.map(mediaQuery => mediaQuery.mediaQueryWidth)
@@ -32,4 +32,4 @@ const uniqueMediaQuery = ({ crystalData, crystalIndex }) => {
   return newMediaQueryWidthValue
 }
 
-export default uniqueMediaQuery
+export default createUniqueMediaQuery

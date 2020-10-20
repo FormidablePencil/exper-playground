@@ -1,9 +1,9 @@
 import { Accordion, AccordionDetails, AccordionSummary, Grid, makeStyles, Typography } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React, { useContext } from 'react'
-import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalParallax';
-import { WindowWidthContext } from '../../../pages/CrystalParallaxEffect';
-import RenderMediaQuerySliders from './components/RenderMediaQuerySliders';
+import { crystalPositionOnParallaxCanvasT } from '../../constants/crystalParallax';
+import { WindowWidthContext } from '../../pages/CrystalParallaxEffect';
+import RenderMediaQuerySliders from './RenderMediaQuerySliders';
 
 function ModMediaQueries({ dispatchCrystalData, selectedCrystalProps, expandedAccordions, toggleAccodion }:
   { dispatchCrystalData, selectedCrystalProps: crystalPositionOnParallaxCanvasT, expandedAccordions, toggleAccodion }) {

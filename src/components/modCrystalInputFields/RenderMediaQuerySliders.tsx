@@ -1,6 +1,6 @@
 import { Button, Grid, Slider, Typography, withStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react'
-import { dispatchCrystalDataT } from '../../../../hooks/useParallaxProperties';
+import { dispatchCrystalDataT } from '../../hooks/useParallaxProperties';
 
 export interface sliderValuesT { initial, mod }
 
@@ -10,6 +10,7 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
   const [sliderValues, setSliderValues] = useState<sliderValuesT[]>([{ initial: 0, mod: 0 }])
   const [readyToSave, setReadyToSave] = useState(false)
 
+  
   const onChangeSlider = ({ newValue, key }) => {
     setSliderValues(prev => prev.map(prevItem =>
       prevItem.initial === key ? { mod: newValue, initial: prevItem.initial } : prevItem))
@@ -58,12 +59,12 @@ const RenderMediaQuerySliders = ({ dispatchCrystalData, selectedCrystalProps }:
       return value
     })
   }, [sliderValues])
-
+console.log(selectedCrystalProps.mediaQueryWidth);
   return (
     <>
       <Typography
         variant='h5'
-        color={selectedCrystalProps.mediaQueryWidth === null ? 'secondary' : 'primary'}>
+        color={selectedCrystalProps.mediaQueryWidth === '' ? 'secondary' : 'primary'}>
         Original
         </Typography>
 

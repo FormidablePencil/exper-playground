@@ -1,8 +1,8 @@
 import { makeStyles } from '@material-ui/core';
 import React, { createContext } from 'react'
-import ParallaxGui from '../components/crystals/ParallaxGui';
+import ParallaxGui from '../components/ParallaxGui';
 import useParallaxProperties, { useParallaxPropertiesT } from '../hooks/useParallaxProperties';
-import RenderCrystalsDynamically from '../components/crystals/RenderCrystalsDynamically';
+import RenderCrystalsDynamically from '../components/RenderCrystalsDynamically';
 
 export const WindowWidthContext = createContext({ windowWidth: 0 })
 export const CrystalDataContext = createContext<any>({ crystalData: {} })

@@ -1,13 +1,13 @@
 import { Grid, makeStyles } from '@material-ui/core'
 import React, { useState } from 'react'
-import { crystalPositionOnParallaxCanvasT } from '../../../constants/crystalParallax';
-import ModPosition from './ModPosition';
-import ModShadow from './ModShadow';
-import ModColor from './ModColor';
-import ModTransform from './ModTransform';
-import ModAddChangeDelete from './ModAddChangeDelete';
-import ModImage from './ModImage';
-import ModMediaQueries from './ModMediaQueries';
+import ModPosition from './modCrystalInputFields/ModPosition';
+import ModShadow from './modCrystalInputFields/ModShadow';
+import ModColor from './modCrystalInputFields/ModColor';
+import ModTransform from './modCrystalInputFields/ModTransform';
+import ModAddChangeDelete from './modCrystalInputFields/ModAddChangeDelete';
+import ModImage from './modCrystalInputFields/ModImage';
+import ModMediaQueries from './modCrystalInputFields/ModMediaQueries';
+import { crystalPositionOnParallaxCanvasT } from '../constants/crystalParallax';
 
 function ModifyCrystalInputFields({ deleteCrystal, modMenuFixed, selectedCrystalProps, dispatchCrystalData, addSpecificCrystal }:
   { deleteCrystal, modMenuFixed, selectedCrystalProps: crystalPositionOnParallaxCanvasT, dispatchCrystalData, addSpecificCrystal }) {
@@ -92,10 +92,10 @@ const useStyles = makeStyles((theme) => ({
   },
   modeMenuFixed: {
     position: 'fixed',
-    right: 0,
-    top: 20,
+    right: - 50,
+    top: 0,
     width: 500,
-    transform: 'scale(.8)',
+    transform: 'scale(.7)',
   },
 }));
 

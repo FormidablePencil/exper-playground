@@ -1,8 +1,8 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, Grid, makeStyles } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import React from 'react'
-import { mapOverTotalOfCrystals } from '../../../helpers/mapOverTotalOfCrystals';
-import SelectCrystal from '../SelectCrystal';
+import { mapOverTotalOfCrystals } from '../../helpers/mapOverTotalOfCrystals';
+import SelectCrystal from '../crystals/SelectCrystal';
 
 function CrystalSelectionAccordion({ onClickCrystalHandler, accordionSummary }) {
   const classes = useStyles();

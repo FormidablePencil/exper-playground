@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react'
 import crystalParallaxDefault, { crystalParallaxT, defaultCrystalData } from '../constants/crystalParallax'
-import { sliderValuesT } from '../components/crystals/modCrystalInputFields/components/RenderMediaQuerySliders'
 import cloneDeep from 'lodash/cloneDeep';
 import useCompileCrystalData from './useCompileCrystalData';
 import useWindowSize from "./useWindowSize"
-import mainCrystalDataReducer from '../functions/mainCrystalDataReducer';
+import mainCrystalDataReducer from '../reducers/mainCrystalDataReducer';
+import { sliderValuesT } from '../components/modCrystalInputFields/RenderMediaQuerySliders';
 
 export interface selectedForModeColorsT { middle, edge }
 export interface dispatchCrystalDataT { type, payload?: { newValue?, moddedMediaQueryValues?: sliderValuesT[], mediaQueryWidth?} }
